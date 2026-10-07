@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>马志安 · 公关作品集（脱密版）</title>
+<style>
+  :root{
+    --paper:#f5f0e6;
+    --paper-dim:#efe8da;
+    --ink:#171310;
+    --ink-2:#4a423a;
+    --ink-3:#8a7f72;
+    --line:rgba(23,19,16,.18);
+    --line-soft:rgba(23,19,16,.08);
+    --red:#b3271e;
+    --ease:cubic-bezier(0.22,1,0.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:15px;line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  ::selection{background:var(--red);color:var(--paper)}
+  .serif{font-family:"Songti SC","STSong","Noto Serif SC","Noto Serif CJK SC","SimSun",serif}
+  .mono{font-family:ui-monospace,"SF Mono","Cascadia Mono","Courier New",monospace}
+
+  /* ---------- scroll progress ---------- */
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red);z-index:99}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px}
+  section{padding:56px 0 8px}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- section header ---------- */
+  .sec-head{border-top:1px solid var(--ink);padding-top:14px;margin-bottom:34px}
+  .sec-eyebrow{display:flex;justify-content:space-between;align-items:baseline;
+    font-size:10px;letter-spacing:.18em;color:var(--ink-3);text-transform:uppercase}
+  .sec-eyebrow .no{color:var(--red)}
+  .sec-title{font-size:30px;font-weight:700;letter-spacing:.02em;margin-top:10px;line-height:1.25}
+
+  /* ---------- cover ---------- */
+  .cover{min-height:96vh;display:flex;flex-direction:column;justify-content:space-between;padding:26px 0 34px}
+  .cover-top{display:flex;justify-content:space-between;align-items:flex-start}
+  .cover-meta{font-size:10px;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;line-height:2}
+  .seal{
+    width:52px;height:52px;background:var(--red);color:var(--paper);
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    font-size:15px;font-weight:700;line-height:1.15;letter-spacing:.1em;
+    flex:none;margin-left:16px;
+  }
+  .cover-mid{margin:8vh 0}
+  .cover-kicker{font-size:11px;letter-spacing:.3em;color:var(--red);margin-bottom:18px;text-transform:uppercase}
+  .cover-name{font-size:56px;font-weight:900;line-height:1.05;letter-spacing:.04em}
+  .cover-role{font-size:19px;font-weight:700;margin-top:14px;letter-spacing:.02em}
+  .cover-anon{font-size:13px;color:var(--ink-2);margin-top:6px}
+  .cover-prop{
+    margin-top:30px;padding-top:22px;border-top:1px solid var(--line);
+    font-size:16.5px;line-height:1.9;color:var(--ink);
+  }
+  .cover-prop em{font-style:normal;color:var(--red);font-weight:700}
+  .kv-grid{border-top:1px solid var(--ink)}
+  .kv{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line-soft);align-items:baseline}
+  .kv .k{font-size:10px;letter-spacing:.16em;color:var(--ink-3);text-transform:uppercase;flex:none;width:76px}
+  .kv .v{font-size:13.5px;font-weight:600}
+  .cover-hint{text-align:center;font-size:10px;letter-spacing:.3em;color:var(--ink-3);margin-top:26px}
+
+  /* ---------- data wall ---------- */
+  .wall{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}
+  .stat{padding:22px 14px 20px 0;border-bottom:1px solid var(--line-soft)}
+  .stat:nth-child(odd){border-right:1px solid var(--line-soft);padding-right:16px}
+  .stat:nth-child(even){padding-left:16px}
+  .stat .num{font-size:44px;font-weight:900;line-height:1.05;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .stat .num .unit{font-size:20px;font-weight:700;margin-left:2px}
+  .stat.hot .num{color:var(--red)}
+  .stat .cap{font-size:12.5px;font-weight:700;margin-top:10px;line-height:1.5}
+  .stat .sub{font-size:11px;color:var(--ink-3);margin-top:4px;line-height:1.55}
+  .tag{display:inline-block;font-size:9.5px;letter-spacing:.06em;color:var(--ink-3);
+    border:1px solid var(--line);padding:1px 5px;margin-top:7px;line-height:1.6}
+
+  /* ---------- timeline ---------- */
+  .tl{border-top:1px solid var(--ink)}
+  .tl-item{position:relative;padding:22px 0 22px 30px;border-bottom:1px solid var(--line-soft)}
+  .tl-item::before{content:"";position:absolute;left:0;top:30px;width:9px;height:9px;border-radius:50%;
+    background:var(--paper);border:1.5px solid var(--ink)}
+  .tl-item.now::before{background:var(--red);border-color:var(--red)}
+  .tl-item::after{content:"";position:absolute;left:4px;top:0;bottom:0;width:1px;background:var(--line-soft)}
+  .tl-item:first-child::after{top:30px}
+  .tl-item:last-child::after{bottom:auto;height:34px}
+  .tl-date{font-size:10.5px;letter-spacing:.14em;color:var(--red);text-transform:uppercase;font-weight:600}
+  .tl-role{font-size:18px;font-weight:800;margin-top:6px;letter-spacing:.02em}
+  .tl-org{font-size:11.5px;color:var(--ink-3);margin-top:2px}
+  .tl-desc{font-size:13px;color:var(--ink-2);margin-top:8px;line-height:1.7}
+
+  /* ---------- cases ---------- */
+  .case{border-top:1px solid var(--ink);padding:26px 0 30px}
+  .case-top{display:flex;align-items:baseline;gap:14px}
+  .case-no{font-size:12px;letter-spacing:.14em;color:var(--red);text-transform:uppercase;flex:none}
+  .case-title{font-size:21px;font-weight:800;letter-spacing:.02em;line-height:1.35}
+  .case-claim{font-size:13.5px;color:var(--ink-2);margin:12px 0 16px;font-weight:600}
+  .case ul{list-style:none}
+  .case li{position:relative;padding:9px 0 9px 18px;font-size:13.5px;line-height:1.7;border-top:1px dashed var(--line)}
+  .case li::before{content:"";position:absolute;left:0;top:20px;width:7px;height:1.5px;background:var(--red)}
+  .case li b{font-weight:700}
+  .case li .m{color:var(--ink-3);font-size:11.5px}
+  .case-result{
+    margin-top:16px;padding:12px 14px;background:var(--paper-dim);
+    font-size:13px;font-weight:700;line-height:1.7;border-left:2px solid var(--red);
+  }
+
+  /* ---------- quote ---------- */
+  .quote{padding:60px 0;text-align:center}
+  .quote .q-mark{font-size:15px;letter-spacing:.4em;color:var(--red);margin-bottom:18px;text-transform:uppercase}
+  .quote .q-text{font-size:23px;font-weight:800;line-height:1.7;letter-spacing:.02em}
+  .quote .q-sub{font-size:12px;color:var(--ink-3);margin-top:16px}
+
+  /* ---------- method ---------- */
+  .m-grid{border-top:1px solid var(--ink)}
+  .m-item{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line-soft)}
+  .m-code{font-size:10.5px;letter-spacing:.1em;color:var(--red);flex:none;width:52px;padding-top:4px;text-transform:uppercase}
+  .m-body .m-name{font-size:15.5px;font-weight:800}
+  .m-body .m-desc{font-size:12.5px;color:var(--ink-2);margin-top:4px;line-height:1.7}
+
+  /* ---------- contact ---------- */
+  .stat.wide{grid-column:1/-1;border-right:none;padding-right:0}
+  .tl-group{position:relative;padding:30px 0 6px 30px;font-size:10.5px;letter-spacing:.18em;
+    color:var(--red);text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--line-soft)}
+  .tl-group::after{content:"";position:absolute;left:4px;top:0;bottom:0;width:1px;background:var(--line-soft)}
+  .quote + .quote{padding-top:0}
+  .contact{background:var(--ink);color:var(--paper);margin-top:64px;padding:56px 0 40px}
+  .contact .sec-eyebrow{color:rgba(245,240,230,.45)}
+  .contact .sec-head{border-top-color:var(--paper)}
+  .contact .sec-title{color:var(--paper)}
+  .contact-line{font-size:14px;color:rgba(245,240,230,.78);line-height:1.9}
+  .phone{display:block;font-size:40px;font-weight:900;letter-spacing:.03em;color:var(--paper);
+    text-decoration:none;margin:22px 0 6px;font-variant-numeric:tabular-nums}
+  .phone small{font-size:12px;font-weight:400;color:rgba(245,240,230,.5);letter-spacing:.1em;display:block;margin-top:6px}
+  .mail{font-size:13px;color:rgba(245,240,230,.65);text-decoration:none;border-bottom:1px solid rgba(245,240,230,.3)}
+  .disclaimer{margin-top:38px;padding-top:16px;border-top:1px solid rgba(245,240,230,.16);
+    font-size:10.5px;color:rgba(245,240,230,.42);line-height:1.9}
+
+  @media(min-width:640px){
+    .cover-name{font-size:72px}
+    .stat .num{font-size:52px}
+    .sec-title{font-size:34px}
+    .quote .q-text{font-size:27px}
+  }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- ============ 00 COVER ============ -->
+<header class="cover wrap">
+  <div class="cover-top">
+    <div class="cover-meta mono">
+      Portfolio · 2026<br>
+      Public Relations<br>
+      Chain Retail / New Consumer
+    </div>
+    <div class="seal serif">脱密<br>版</div>
+  </div>
+
+  <div class="cover-mid">
+    <div class="cover-kicker mono">Personal Portfolio — Redacted</div>
+    <h1 class="cover-name serif">马志安</h1>
+    <div class="cover-role serif">万店连锁品牌 · 公关体系搭建者</div>
+    <div class="cover-anon">某头部便利店品牌 首任公共关系负责人（4 万+门店，中国便利店行业门店数第一）</div>
+    <p class="cover-prop">
+      <em>公关科班</em>（广告学本科 ＋ 新闻学硕士）× <em>甲乙方双背景</em>（国际公关与舆情机构训练 ＋ 实业集团近五年「一人公关部」）× <em>零售全价值链</em>（万店连锁五年六岗，从总经理助理到首任公关部长）。
+      我做的公关不是「灭火队」，而是一套<em>可复制的体系</em>：算得清风险、接得住危机、沉得淀方法。
+    </p>
+  </div>
+
+  <div>
+    <div class="kv-grid">
+      <div class="kv"><span class="k mono">Career</span><span class="v">13 年职场｜公关科班（广告学 ＋ 新闻学硕士）｜甲乙方双背景</span></div>
+      <div class="kv"><span class="k mono">Base</span><span class="v">广东 · 东莞（一线城市优先，机会城市亦可）</span></div>
+      <div class="kv"><span class="k mono">Focus</span><span class="v">连锁零售 / 新消费品牌 · 公关一号位</span></div>
+      <div class="kv"><span class="k mono">Report to</span><span class="v">管理层（总经理 / 常务副总级）</span></div>
+      <div class="kv"><span class="k mono">Education</span><span class="v">广告学本科 → 新闻学硕士 · 英语 CET-6 · 粤语母语</span></div>
+    </div>
+    <div class="cover-hint mono">SCROLL ↓</div>
+  </div>
+</header>
+
+<!-- ============ 01 DATA WALL ============ -->
+<section class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow mono"><span><span class="no">01</span> — Data Wall</span><span>证据先行</span></div>
+    <h2 class="sec-title serif">十一组数字，认识我</h2>
+  </div>
+
+  <div class="wall">
+    <div class="stat wide hot reveal">
+      <div class="num serif"><span data-count="13">0</span><span class="unit">年</span></div>
+      <div class="cap">公关科班 × 甲乙方双背景</div>
+      <div class="sub">广告学本科＋新闻学硕士 → 国际公关与舆情机构训练 → 实业集团甲方公关 → 万店连锁零售全价值链</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num serif"><span data-count="4">0</span><span class="unit">万+</span></div>
+      <div class="cap">公关体系覆盖门店</div>
+      <div class="sub">6 大战区 · 29 个大区 · 三级公关网络</div>
+    </div>
+    <div class="stat hot reveal">
+      <div class="num serif"><span data-count="13">0</span><span class="unit">小时</span></div>
+      <div class="cap">315 危机首份官方声明</div>
+      <div class="sub">监测告警起算，当日成立危机指挥部</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num serif"><span data-count="39">0</span><span class="unit">天</span></div>
+      <div class="cap">重大危机消退周期</div>
+      <div class="sub">日负面从峰值 14,391 条降至个位数</div>
+      <span class="tag mono">内部监测口径</span>
+    </div>
+    <div class="stat reveal">
+      <div class="num serif"><span data-count="606">0</span><span class="unit">家</span></div>
+      <div class="cap">问题加盟商解约 / 整改通报</div>
+      <div class="sub">获省级烟草专卖局阶段性认可通报</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num serif"><span data-count="20">0</span><span class="unit">万+条</span></div>
+      <div class="cap">月均舆情监测规模</div>
+      <div class="sub">体系跑顺后实现全月零 P1 记录</div>
+      <span class="tag mono">内部监测口径</span>
+    </div>
+    <div class="stat hot reveal">
+      <div class="num serif"><span data-count="82">0</span><span class="unit">%</span></div>
+      <div class="cap">舆情闭环率（自 40% 提升）</div>
+      <div class="sub">日清机制运行后稳定在 85% 以上</div>
+      <span class="tag mono">内部监测口径</span>
+    </div>
+    <div class="stat reveal">
+      <div class="num serif"><span data-count="70">0</span><span class="unit">%+</span></div>
+      <div class="cap">SEO 重点平台搜索正中率</div>
+      <div class="sub">从平均 20%+ 系统性提升</div>
+      <span class="tag mono">内部监测口径</span>
+    </div>
+    <div class="stat reveal">
+      <div class="num serif"><span data-count="273">0</span><span class="unit">万+</span></div>
+      <div class="cap">「换锚点」传播总曝光</div>
+      <div class="sub">481 条收录 · 100% 正面 / 中性 · 零负面</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num serif"><span data-count="5.5" data-decimal="1">0</span><span class="unit">万屏</span></div>
+      <div class="cap">RMN 媒体资产确权</div>
+      <div class="sub">年刊例收入预期 140 万+ · 任项目 PM</div>
+      <span class="tag mono">内部</span>
+    </div>
+    <div class="stat hot reveal">
+      <div class="num serif">+<span data-count="80">0</span><span class="unit">%</span></div>
+      <div class="cap">会员非烟销售同比</div>
+      <div class="sub">大区经营实战 · 月度来客数 +31%</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 TIMELINE ============ -->
+<section class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow mono"><span><span class="no">02</span> — Career Path</span><span>2013 — 2026</span></div>
+    <h2 class="sec-title serif">十三年，<br>从乙方手艺到万店体系</h2>
+  </div>
+
+  <div class="tl">
+    <div class="tl-group mono">乙方训练与甲方实业 · 2013 — 2021</div>
+    <div class="tl-item reveal">
+      <div class="tl-date mono">2013.09 — 2016.03</div>
+      <div class="tl-role serif">国际公关与舆情机构训练（实习）</div>
+      <div class="tl-org mono">伟达 · 明思力 · 艾熹 · 蓝门 · 百视通</div>
+      <div class="tl-desc">乙方手艺的起点：企业公关、舆情分析、活动公关、新媒体逐个岗位实战，服务客户含米其林、开云集团、Burberry、歌诗达邮轮、汇丰等。</div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-date mono">2016.07 — 2021.03</div>
+      <div class="tl-role serif">某实业投资集团（东莞）· 公关经理 / 总经理助理</div>
+      <div class="tl-org mono">甲方「一人公关部」· 近五年</div>
+      <div class="tl-desc">公司与地块收购法律文书起草、政府事务沟通、VI 系统与形象资料搭建、兄弟公司商务与法务管理、总部筹建购地与招投标——一个人扛起一家实业集团的公关与总助全盘。</div>
+    </div>
+    <div class="tl-group mono">某头部便利店品牌 · 五年走完零售全价值链 · 2021 — 至今</div>
+    <div class="tl-item reveal">
+      <div class="tl-date mono">2021.03 — 2022.09</div>
+      <div class="tl-role serif">总经理助理 → 数据资产管理</div>
+      <div class="tl-org mono">总经办 → 数据体系</div>
+      <div class="tl-desc">参与集团协作平台引进与云服务合作对接，流程与数据的起点。<b>信息总部从 0 到 1 的首份纪要记录人，《数据资产管控流程》署名起草</b>（三版迭代）。</div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-date mono">2022.09 — 2023.03</div>
+      <div class="tl-role serif">董事长助理</div>
+      <div class="tl-org mono">总经理办公室</div>
+      <div class="tl-desc">近距离参与公司最高层决策与总经办运作。<b>「铁三角会议」纪要记录人，全公司年度述职模板起草人</b>。</div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-date mono">2023.03 — 2023.07</div>
+      <div class="tl-role serif">知识管理课长（兼企业传播部负责人）</div>
+      <div class="tl-org mono">总经理办公室 / 文化传播中心</div>
+      <div class="tl-desc">从零搭建知识管理课，方法论沉淀的起点。<b>企业传播部负责人，《传播体系规划》署名，建起 8 大体系知识管理员网络</b>。</div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-date mono">2023.07 — 2024.11</div>
+      <div class="tl-role serif">山东大区 · 加盟线四课连岗</div>
+      <div class="tl-org mono">公司认定艰难开发地区</div>
+      <div class="tl-desc">计划管理 → 潍城加盟 → 济南加盟 → 加盟建店。开发的拓展管理系统与加盟政策方案至今仍在使用；兼任加盟课程讲师、90 天业务导师、面试官。<b>《加盟拓展能力建设方案》署名，规划网点达成 111%，拓展员人均开店 0.23 → 0.26，培养的拓展员后续均能开出 2 间店以上</b>。</div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-date mono">2024.11 — 2026.02</div>
+      <div class="tl-role serif">用户运营部部长</div>
+      <div class="tl-org mono">山东大区 → 广东战区核心商圈</div>
+      <div class="tl-desc">山东用户营销：月度来客数 +31%、会员日均非烟销售同比 +80%。<b>广东核心商圈年度操盘：商品销售额 4.26 亿元（完成率 100.5%）、外卖日均非烟 185 元（完成率 137%）、新店日均非烟 3,414 元（130%）、会员销售占比提升至 58%、双节大会员非烟销售 2,979 万元</b>。S 级项目立项文件署名 APMO，智能音频业务 owner，三方共创联合治理机制成员；培养 1 名继任者 ＋ 1 名金种子。</div>
+    </div>
+    <div class="tl-item now reveal">
+      <div class="tl-date mono">2026.02 — 至今</div>
+      <div class="tl-role serif">公共关系部部长（首任）</div>
+      <div class="tl-org mono">直接向管理层汇报</div>
+      <div class="tl-desc">从 0 到 1 搭建覆盖 4 万+门店的公共关系体系：<b>L1-L4 流程体系（4 战略域 × 16 核心流程 × 40 作业程序 × 28 工具表单）、全国 26 大区公关岗网络、5.5 万屏资源确权</b>；负面舆情从峰值 5,030 条逐周降至 178 条、闭环率 40% → 82%（内部监测口径），敏感舆情 48 小时下架 / 限流。<b>缺编约 5 人、媒介岗空缺下 1 人顶 3 人负荷，统筹 5 条工作线</b>。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 CASES ============ -->
+<section class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow mono"><span><span class="no">03</span> — Case Files</span><span>攻防皆有</span></div>
+    <h2 class="sec-title serif">四个案例</h2>
+  </div>
+
+  <!-- CASE 01 -->
+  <article class="case reveal">
+    <div class="case-top">
+      <span class="case-no mono">Case — 01</span>
+      <h3 class="case-title serif">重大危机处置：315 假烟危机（P0 级）</h3>
+    </div>
+    <p class="case-claim">晚会曝光当晚登微博热搜前 50——我牵头处置一场超级传播级危机。</p>
+    <ul>
+      <li><b>先算再动：</b>SEIR 模型测算 R0≈6，判定超级传播级、冷处理无效，当即启动作战机制 <span class="m">（内部监测口径）</span></li>
+      <li><b>双黄金时效：</b>监测告警后 0.5 小时完成研判，13 小时发出首份官方声明，当日成立危机指挥部，口径统一到一个出口</li>
+      <li><b>三线并行：</b>事实线（4 万+门店拉网排查）/ 传播线（「四项零容忍」设置议题）/ 信心线（加盟商分层沟通＋连续 11 天整改日记）</li>
+      <li><b>节奏控制：</b>「声明 → 零容忍 → 透明行动周 → 解约通报」分阶段释放，每一棒接在舆情曲线拐点，处置动作零次生舆情</li>
+      <li><b>608 食安专项：</b>提前 2 个月预警准备，事件后 24 小时内发起「清源行动」，三次行动后转入常态化</li>
+    </ul>
+    <div class="case-result">
+      三日负面声量降幅 75.9%（内部监测口径）；39 天消退期，日负面从峰值 14,391 条降至 9 条，全周期声量 973,712 条全程闭环（内部监测口径）；606 家问题加盟商解约 / 整改通报，获省级烟草专卖局阶段性认可。315 与 608 两起重大危机，均未爆发二次舆情。
+    </div>
+  </article>
+
+  <!-- CASE 02 -->
+  <article class="case reveal">
+    <div class="case-top">
+      <span class="case-no mono">Case — 02</span>
+      <h3 class="case-title serif">舆情监测体系：从 0 到 1 的基建</h3>
+    </div>
+    <p class="case-claim">发现要比媒体早——把「能人经验」换成「系统运转」。</p>
+    <ul>
+      <li><b>响应机制：</b>黄金 12 小时作战机制（T+0.5h 研判 → T+12h 窗口动作），四级预警（红橙黄蓝）＋ P0-P3 分级写进制度</li>
+      <li><b>监测规模：</b>月均监测 20 万+条，全生命周期台账（发现-定级-处置-闭环-复盘），异常波动自动预警 <span class="m">（内部监测口径）</span></li>
+      <li><b>闭环率：</b>从 40% 提升至 82%，日清机制运行后稳定在 85% 以上 <span class="m">（内部监测口径）</span></li>
+      <li><b>SEO 健康度：</b>重点平台搜索正中率从平均 20%+ 提升至 70%+ <span class="m">（内部监测口径）</span></li>
+      <li><b>代理治理：</b>主导更换监测代理，从「为过程付费」转向「为结果付费」 <span class="m">（内部）</span></li>
+      <li><b>AI 前瞻：</b>担任 AI 舆情预警项目 APM，牵引数据整合——立项预估舆情响应从 4 小时降至 15 分钟、危机损失降低 80% <span class="m">（立项预估）</span></li>
+    </ul>
+    <div class="case-result">
+      2026 上半年两起 P0 专项加常态舆情日清，敏感舆情 48 小时下架 / 限流；6 月负面从峰值 5,030 条逐周压降至 178 条（内部监测口径）；8 月全月无一起 P1。
+    </div>
+  </article>
+
+  <!-- CASE 03 -->
+  <article class="case reveal">
+    <div class="case-top">
+      <span class="case-no mono">Case — 03</span>
+      <h3 class="case-title serif">加盟生态与增长：在最难的市场打硬仗</h3>
+    </div>
+    <p class="case-claim">公关一号位要懂经营——我在公司认定的艰难开发地区待过一年半。</p>
+    <ul>
+      <li><b>山东大区加盟线：</b>四个课连岗（计划管理 → 加盟 → 建店），署名《加盟拓展能力建设方案》——规划网点达成 111% 超额，拓展员人均开店 0.26，培养的拓展员后续均能开出 2 间店以上</li>
+      <li><b>来客增长：</b>月度来客数 +31%，年度来客数 +15%</li>
+      <li><b>会员经营：</b>操盘主题会员价全月档，会员日均非烟销售与非烟来客同比 +80%</li>
+      <li><b>核心商圈操盘：</b>年度商品销售额 4.26 亿元（完成率 100.5%）、外卖日均非烟 185 元（完成率 137%）、新店日均非烟 3,414 元（130%）、会员销售占比提升至 58%、双节大会员非烟销售 2,979 万元</li>
+      <li><b>外卖增量：</b>外卖日均非烟销售额同比 +55.8%；全月档环比旧档提升出货 58 万</li>
+      <li><b>项目牵引：</b>担任公司 S 级「核心商圈攻坚战」APMO（立项文件署名），建立整套项目管理套表；兼任三方共创项目联合治理成员；培养 1 名继任者 ＋ 1 名金种子</li>
+      <li><b>智能音频新业务：</b>任业务 owner，24 店 30 天实测——非烟来客 +4%、会员交易 +6%、广告营收破 0 <span class="m">（内部测试口径）</span></li>
+    </ul>
+    <div class="case-result">
+      经营视角反哺公关：处置 315 时稳住加盟商信心的分层沟通打法，正来自加盟一线的实盘经验——舆情的终点不是热搜降下来，而是加盟商的信心回来。
+    </div>
+  </article>
+
+  <!-- CASE 04 -->
+  <article class="case reveal">
+    <div class="case-top">
+      <span class="case-no mono">Case — 04</span>
+      <h3 class="case-title serif">商业化与传播：会灭火，更会造势</h3>
+    </div>
+    <p class="case-claim">315 之后不洗旧稿——借权威场子换上新锚点，把屏幕变成资产。</p>
+    <ul>
+      <li><b>「换锚点」传播：</b>行业顶级大会期间，以行业最大规模公开实证嵌入官方叙事——总曝光 273 万+，481 条收录 100% 正面 / 中性零负面，此前刊发批评稿的媒体转向发正面深度稿</li>
+      <li><b>RMN 商业化：</b>5.5 万+屏幕资源确权与台账，提炼 5 个广告产品，年刊例收入预期 140 万+、ROI 预期 140%–367% <span class="m">（内部，任项目 PM）</span>；广告刊例实现 0 突破、单品牌单月增收 4 万元；推动联通宽带门店试点签约</li>
+      <li><b>29 周年伙伴大会：</b>20 余天极限筹备（行业常规 3 个月），主会场约 850 人，费用 157.5 万控制在 160 万预算内；媒体发布 300+ 条，通稿带动 150+ 家转载</li>
+      <li><b>节奏资产：</b>52 周传播日历＋年度 12 个高危节点日历＋ 315 战备期机制，攻与防各有时间表</li>
+      <li><b>公益与救灾：</b>公益传播沉淀为年度固定动作；跨省水灾救援在 48–72 小时窗口内完成响应，报事实不报情怀、报动作不报金额</li>
+    </ul>
+    <div class="case-result">
+      传播势能 = 总部内容力 × 门店节点数 × 时机选择——4 万门店是纯线上品牌买不到的分布式触点，关键是给门店「零成本参与」的动作设计。
+    </div>
+  </article>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="wrap">
+  <div class="quote reveal">
+    <div class="q-mark mono">Method —</div>
+    <p class="q-text serif">危机公关的核心不是「说什么」，<br>而是先算清楚「会不会扩散」，<br>再决定「怎么介入」。</p>
+    <p class="q-sub">—— 315 教我最重要的一课</p>
+  </div>
+  <div class="quote reveal">
+    <div class="q-mark mono">Career —</div>
+    <p class="q-text serif">先在乙方学会手艺，<br>再在甲方学会生意。</p>
+    <p class="q-sub">—— 十三年甲乙方双背景的注脚</p>
+  </div>
+</section>
+
+<!-- ============ 04 METHOD ============ -->
+<section class="wrap">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow mono"><span><span class="no">04</span> — Methodology</span><span>离开我照样转</span></div>
+    <h2 class="sec-title serif">沉淀下来的工具</h2>
+  </div>
+
+  <div class="m-grid">
+    <div class="m-item reveal">
+      <span class="m-code mono">M—01</span>
+      <div class="m-body">
+        <div class="m-name serif">SEIR 舆情量化模型</div>
+        <div class="m-desc">三个参数：平台属性（公域 / 私域）、情绪烈度、KOL 介入度，历史案例校准。给管理层一张「传播曲线预测图」，代替一句「我觉得会发酵」。</div>
+      </div>
+    </div>
+    <div class="m-item reveal">
+      <span class="m-code mono">M—02</span>
+      <div class="m-body">
+        <div class="m-name serif">L1–L4 流程体系</div>
+        <div class="m-desc">4 个战略域 × 16 个核心流程 × 40 个作业程序 × 28 个工具表单，公关动作全部有流程归属。</div>
+      </div>
+    </div>
+    <div class="m-item reveal">
+      <span class="m-code mono">M—03</span>
+      <div class="m-body">
+        <div class="m-name serif">危机 SOP 四条</div>
+        <div class="m-desc">双黄金时效 / 信息中枢口径 / 顺势而为议题 / 雷达扫描次生预警——下次再有危机，照表执行。</div>
+      </div>
+    </div>
+    <div class="m-item reveal">
+      <span class="m-code mono">M—04</span>
+      <div class="m-body">
+        <div class="m-name serif">投诉模板矩阵</div>
+        <div class="m-desc">6 场景 × 5 对象，22 份编号模板；禁忌清单比话术更重要——一线最大的风险不是「不会说」，是「说错一句」。</div>
+      </div>
+    </div>
+    <div class="m-item reveal">
+      <span class="m-code mono">M—05</span>
+      <div class="m-body">
+        <div class="m-name serif">三级公关网络</div>
+        <div class="m-desc">公共关系中心 4 岗（媒体公关 / 政府关系 / 舆情管理 / 传播策划）＋ 18 个实体单位公关岗 ＋ 26 个大区联络员，配日 / 周 / 月清单，一线动作可查可考。</div>
+      </div>
+    </div>
+    <div class="m-item reveal">
+      <span class="m-code mono">M—06</span>
+      <div class="m-body">
+        <div class="m-name serif">职业打假预防体系</div>
+        <div class="m-desc">风险图谱 → 合规前置 → 应诉决策树 → 舆情联防。最好的防守是合规，最好的进攻是让它无利可图；机制上线后次生舆情 0 起。</div>
+      </div>
+    </div>
+    <div class="m-item reveal">
+      <span class="m-code mono">M—07</span>
+      <div class="m-body">
+        <div class="m-name serif">连锁零售 AI Skills 库</div>
+        <div class="m-desc">一手封装 62 个连锁加盟零售场景的 AI Skills，覆盖内容生产、监测分析、流程作业的 AI 工具流——方法论不止写在纸上，还跑在模型里。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 CONTACT ============ -->
+<footer class="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-eyebrow mono"><span><span class="no">05</span> — Contact</span><span>随时可聊</span></div>
+      <h2 class="sec-title serif">给我两周，<br>跑通这套系统的第一版</h2>
+    </div>
+    <p class="contact-line reveal">
+      模板矩阵按贵司风险谱重写，监测关键词库按贵司品牌词重建——先覆盖 TOP3 高危场景与实时品牌词监测，再按季度迭代扩全。期待与连锁零售 / 新消费品牌共建声誉体系。
+    </p>
+    <a class="phone serif reveal" href="tel:17620590302">176 2059 0302<small class="mono">CALL / WECHAT — 求职专用号，与微信同号</small></a>
+    <a class="mail reveal" href="mailto:mazhian@yeah.net">mazhian@yeah.net</a>
+    <p class="disclaimer reveal">
+      脱密声明：本作品集为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；标注「内部监测口径 / 内部」的数据仅作能力佐证，原始台账与通报文件可于面试现场核验。公开事实部分（解约通报、致歉声明、监管通报等）均可公开检索。
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* scroll progress */
+  var bar=document.getElementById('progress');
+  function onScroll(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';
+  }
+  document.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  /* reveal on view */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  /* number count-up */
+  function animate(el){
+    var target=parseFloat(el.getAttribute('data-count'));
+    var dec=parseInt(el.getAttribute('data-decimal')||'0',10);
+    var dur=1400, t0=null;
+    function frame(t){
+      if(!t0)t0=t;
+      var p=Math.min((t-t0)/dur,1);
+      var e=1-Math.pow(1-p,3); /* easeOutCubic */
+      el.textContent=(target*e).toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+      if(p<1)requestAnimationFrame(frame);
+      else el.textContent=target.toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+    }
+    requestAnimationFrame(frame);
+  }
+  var nio=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){animate(e.target);nio.unobserve(e.target);}
+    });
+  },{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){nio.observe(el);});
+})();
+</script>
+</body>
+</html>
