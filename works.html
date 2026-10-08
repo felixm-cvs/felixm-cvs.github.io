@@ -1,1 +1,310 @@
-PLACEHOLDER_WORKS
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>作品全集 · 马先生·Felix（脱密版）</title>
+<style>
+  :root{
+    --paper:#f5f0e6;
+    --paper-dim:#efe8da;
+    --ink:#171310;
+    --ink-2:#4a423a;
+    --ink-3:#8a7f72;
+    --line:rgba(23,19,16,.18);
+    --line-soft:rgba(23,19,16,.08);
+    --red:#b3271e;
+    --ease:cubic-bezier(0.22,1,0.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  ::selection{background:var(--red);color:var(--paper)}
+  .serif{font-family:"Songti SC","STSong","Noto Serif SC","Noto Serif CJK SC","SimSun",serif}
+  .mono{font-family:ui-monospace,"SF Mono","Cascadia Mono","Courier New",monospace}
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red);z-index:99}
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- top nav ---------- */
+  .topnav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--ink)}
+  .topnav a{color:var(--ink);text-decoration:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+  .topnav a:hover{color:var(--red)}
+  .topnav .t-meta{font-size:10px;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase}
+
+  /* ---------- hero ---------- */
+  .hero{padding:56px 0 40px}
+  .hero-kicker{font-size:11px;letter-spacing:.3em;color:var(--red);text-transform:uppercase;margin-bottom:16px}
+  .hero-title{font-size:42px;font-weight:900;line-height:1.15;letter-spacing:.02em}
+  .hero-sub{font-size:14px;color:var(--ink-2);margin-top:18px;line-height:1.9}
+  .hero-note{margin-top:22px;padding:14px 16px;background:var(--paper-dim);border-left:2px solid var(--red);
+    font-size:12.5px;line-height:1.8;color:var(--ink-2)}
+  .hero-note b{color:var(--ink)}
+
+  /* ---------- chapter ---------- */
+  .chap{padding:52px 0 8px}
+  .chap-head{border-top:1px solid var(--ink);padding-top:16px;margin-bottom:8px;display:flex;gap:18px;align-items:flex-start}
+  .chap-no{font-size:46px;font-weight:900;color:var(--red);line-height:1;flex:none;letter-spacing:.02em}
+  .chap-name{font-size:23px;font-weight:800;line-height:1.3;letter-spacing:.02em}
+  .chap-period{font-size:10.5px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;margin-top:5px}
+  .chap-intro{font-size:13px;color:var(--ink-2);margin:10px 0 22px;line-height:1.8}
+
+  /* ---------- data bars ---------- */
+  .bars{margin:6px 0 26px;border-top:1px solid var(--line-soft)}
+  .bar{padding:12px 0;border-bottom:1px solid var(--line-soft)}
+  .bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+  .bar-label{font-size:12px;font-weight:700}
+  .bar-val{font-size:12px;font-weight:800;color:var(--red);font-variant-numeric:tabular-nums}
+  .bar-tag{font-size:9.5px;color:var(--ink-3);font-weight:400;margin-left:4px}
+  .bar-track{height:5px;background:var(--paper-dim);position:relative;overflow:hidden}
+  .bar-fill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--ink);transition:width 1.4s var(--ease)}
+  .bar.hot .bar-fill{background:var(--red)}
+  .bar.in .bar-fill{width:var(--w)}
+
+  /* ---------- deliverable cards ---------- */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--ink)}
+  .card{padding:18px 14px 16px 0;border-bottom:1px solid var(--line-soft)}
+  .card:nth-child(odd){border-right:1px solid var(--line-soft);padding-right:16px}
+  .card:nth-child(even){padding-left:16px}
+  .card .c-idx{font-size:10px;letter-spacing:.14em;color:var(--red);font-weight:600}
+  .card .c-name{font-size:14.5px;font-weight:800;margin-top:7px;line-height:1.45}
+  .card .c-desc{font-size:12px;color:var(--ink-2);margin-top:6px;line-height:1.7}
+  .card .c-tag{display:inline-block;font-size:9.5px;letter-spacing:.06em;color:var(--ink-3);
+    border:1px solid var(--line);padding:1px 5px;margin-top:8px;line-height:1.6}
+  @media(max-width:480px){
+    .cards{grid-template-columns:1fr}
+    .card:nth-child(odd){border-right:none;padding-right:0}
+    .card:nth-child(even){padding-left:0}
+  }
+
+  /* ---------- back card ---------- */
+  .back{display:block;border:1px solid var(--ink);padding:26px 24px;margin:56px 0 8px;
+    text-decoration:none;color:var(--ink);transition:background .45s var(--ease),color .45s var(--ease)}
+  .back:hover{background:var(--ink);color:var(--paper)}
+  .back .b-eyebrow{font-size:10px;letter-spacing:.2em;color:var(--red);text-transform:uppercase;font-weight:600}
+  .back .b-title{font-size:22px;font-weight:800;margin-top:8px}
+
+  /* ---------- footer ---------- */
+  .foot{background:var(--ink);color:var(--paper);margin-top:64px;padding:44px 0 34px}
+  .foot .f-title{font-size:20px;font-weight:800}
+  .foot .f-line{font-size:12.5px;color:rgba(245,240,230,.7);margin-top:12px;line-height:1.9}
+  .foot .f-disc{margin-top:26px;padding-top:14px;border-top:1px solid rgba(245,240,230,.16);
+    font-size:10.5px;color:rgba(245,240,230,.42);line-height:1.9}
+
+  @media(min-width:640px){
+    .hero-title{font-size:56px}
+    .chap-no{font-size:56px}
+    .chap-name{font-size:26px}
+  }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav class="topnav wrap">
+  <a href="index.html" class="mono">← Index · 个人主页</a>
+  <span class="t-meta mono">Works · Redacted</span>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero wrap">
+  <div class="hero-kicker mono">Deliverables Archive · 2021 — 2026</div>
+  <h1 class="hero-title serif">作品全集</h1>
+  <p class="hero-sub">
+    马先生·Felix｜某头部便利店品牌（4 万+门店，行业门店数第一）五年五段价值链的交付物档案：
+    数字化基建 → 总部职能 → 加盟拓展 → 用户运营与经营操盘 → 公关与品牌体系，外加横向 AI 资产。
+    从 54 条材料溯源清单中归类出 33 项可点名交付物，每项附一句话价值点。
+  </p>
+  <div class="hero-note reveal">
+    <b>权威佐证：</b>另有 6 项人事档案（干部任命评估表、职级晋升申请表、年度述职报告、个人奖与团队奖申报表、AI 项目立项报告）作为本全集的档案依据，按脱密纪律不展示条目本身，可于面试现场调阅核验。
+  </div>
+</header>
+
+<!-- ============ S1 ============ -->
+<section class="chap wrap">
+  <div class="chap-head reveal">
+    <div class="chap-no serif">S1</div>
+    <div>
+      <h2 class="chap-name serif">数字化基建</h2>
+      <div class="chap-period mono">2021.03 — 2022.09 · 总经理助理 → 数据资产管理</div>
+    </div>
+  </div>
+  <p class="chap-intro reveal">阶段概述：信息总部从 0 到 1 的见证者与记录者，把会议、流程、数据三件套做成系统。</p>
+  <div class="bars">
+    <div class="bar reveal hot"><div class="bar-top"><span class="bar-label">智能会议系统在线会议</span><span class="bar-val">25,000 场/月</span></div><div class="bar-track"><div class="bar-fill" style="--w:96%"></div></div></div>
+    <div class="bar reveal"><div class="bar-top"><span class="bar-label">纪要归档与任务分发赋能项目</span><span class="bar-val">200+ 个</span></div><div class="bar-track"><div class="bar-fill" style="--w:72%"></div></div></div>
+    <div class="bar reveal"><div class="bar-top"><span class="bar-label">署名流程文件</span><span class="bar-val">5 份</span></div><div class="bar-track"><div class="bar-fill" style="--w:38%"></div></div></div>
+  </div>
+  <div class="cards">
+    <div class="card reveal"><div class="c-idx mono">01 · S1</div><div class="c-name serif">智能会议系统 PMO</div><div class="c-desc">会前 / 会中 / 会后三阶段流程化，从试点推向全国复制，让每一场会议都沉淀为可检索的资产。</div><span class="c-tag mono">数字化基建</span></div>
+    <div class="card reveal"><div class="c-idx mono">02 · S1</div><div class="c-name serif">《数据资产管控流程》署名起草</div><div class="c-desc">三版迭代，内部 3 个工作日、外部 5 个工作日办结，附 12 个业务领域三级对接责任表。</div><span class="c-tag mono">数字化基建</span></div>
+    <div class="card reveal"><div class="c-idx mono">03 · S1</div><div class="c-name serif">公司流程地图（L1-L4 梳理）</div><div class="c-desc">拉通数据 IT 与业务部门完成全公司流程梳理，流程看板 ＋ 电子流，流程可视化底盘。</div><span class="c-tag mono">数字化基建</span></div>
+    <div class="card reveal"><div class="c-idx mono">04 · S1</div><div class="c-name serif">BI 驾驶舱项目（交互设计与业务代表）</div><div class="c-desc">高层看板 / 总经办报表 / 大堂数据大屏 / 业务 PK 看板四件套，涉密数据分级可视化。</div><span class="c-tag mono">数字化基建</span></div>
+  </div>
+</section>
+
+<!-- ============ S2 ============ -->
+<section class="chap wrap">
+  <div class="chap-head reveal">
+    <div class="chap-no serif">S2</div>
+    <div>
+      <h2 class="chap-name serif">总部职能</h2>
+      <div class="chap-period mono">2022.09 — 2023.07 · 董事长助理 → 知识管理课长</div>
+    </div>
+  </div>
+  <p class="chap-intro reveal">阶段概述：离最高决策最近的半年，把「人治经验」固化为制度与知识资产。</p>
+  <div class="bars">
+    <div class="bar reveal hot"><div class="bar-top"><span class="bar-label">知识词条建设</span><span class="bar-val">400+ 条</span></div><div class="bar-track"><div class="bar-fill" style="--w:80%"></div></div></div>
+    <div class="bar reveal"><div class="bar-top"><span class="bar-label">知识管理员网络</span><span class="bar-val">8 大体系</span></div><div class="bar-track"><div class="bar-fill" style="--w:62%"></div></div></div>
+    <div class="bar reveal"><div class="bar-top"><span class="bar-label">文档编码分级制度</span><span class="bar-val">沿用至今</span></div><div class="bar-track"><div class="bar-fill" style="--w:100%"></div></div></div>
+  </div>
+  <div class="cards">
+    <div class="card reveal"><div class="c-idx mono">05 · S2</div><div class="c-name serif">文档编码分级制度 / 标准与编码方案</div><div class="c-desc">规范全公司文档命名、分级与归档，获组织档案「组织回馈」栏确认——人走三年，制度仍在。</div><span class="c-tag mono">总部职能</span></div>
+    <div class="card reveal"><div class="c-idx mono">06 · S2</div><div class="c-name serif">知识管理一期体系</div><div class="c-desc">拉通词典—订阅号—知识库—服务台—全局搜索的知识链条，400+ 词条持续流转。</div><span class="c-tag mono">总部职能</span></div>
+    <div class="card reveal"><div class="c-idx mono">07 · S2</div><div class="c-name serif">企业内部传播平台（PM）</div><div class="c-desc">伙伴新闻 / 学习园地 / 员工论坛 / 多媒体四板块，企业文化与知识沉淀的统一门户。</div><span class="c-tag mono">总部职能</span></div>
+    <div class="card reveal"><div class="c-idx mono">08 · S2</div><div class="c-name serif">全公司年度述职模板 ＋ 战略解码报告</div><div class="c-desc">总经办战略解码暨述职报告五版迭代，次年全公司述职模板出自其手。</div><span class="c-tag mono">总部职能</span></div>
+    <div class="card reveal"><div class="c-idx mono">09 · S2</div><div class="c-name serif">协作平台引入与效率先锋大赛</div><div class="c-desc">多维表格引入宣导人、首届效率先锋大赛发起人——全公司工具文化的起点。</div><span class="c-tag mono">总部职能</span></div>
+  </div>
+</section>
+
+<!-- ============ S3 ============ -->
+<section class="chap wrap">
+  <div class="chap-head reveal">
+    <div class="chap-no serif">S3</div>
+    <div>
+      <h2 class="chap-name serif">加盟拓展</h2>
+      <div class="chap-period mono">2023.07 — 2024.11 · 山东大区 · 四课连岗（艰难开发地区）</div>
+    </div>
+  </div>
+  <p class="chap-intro reveal">阶段概述：主动下沉一线，把拓店从「能人驱动」改造成「体系驱动」。</p>
+  <div class="bars">
+    <div class="bar reveal hot"><div class="bar-top"><span class="bar-label">规划网点达成率</span><span class="bar-val">111%</span></div><div class="bar-track"><div class="bar-fill" style="--w:92%"></div></div></div>
+    <div class="bar reveal"><div class="bar-top"><span class="bar-label">拓展员人均开店</span><span class="bar-val">0.23 → 0.26</span></div><div class="bar-track"><div class="bar-fill" style="--w:60%"></div></div></div>
+    <div class="bar reveal"><div class="bar-top"><span class="bar-label">培养的拓展员后续开店</span><span class="bar-val">均能 2 间以上</span></div><div class="bar-track"><div class="bar-fill" style="--w:85%"></div></div></div>
+  </div>
+  <div class="cards">
+    <div class="card reveal"><div class="c-idx mono">10 · S3</div><div class="c-name serif">《好客山东》拓展过程管理系统</div><div class="c-desc">客户 / 铺位 / 育客裂变 / 建店跟踪全流程系统，事业部训战推广，至今仍在使用。</div><span class="c-tag mono">加盟拓展</span></div>
+    <div class="card reveal"><div class="c-idx mono">11 · S3</div><div class="c-name serif">灵活加盟政策及绩效管理方案</div><div class="c-desc">联合财经风控共建，加盟通道打开与风险管住同步完成，政策 ＋ 风控双轮。</div><span class="c-tag mono">加盟拓展</span></div>
+    <div class="card reveal"><div class="c-idx mono">12 · S3</div><div class="c-name serif">《加盟招商课绩效方案》署名设计</div><div class="c-desc">全岗位指标库，把拓展员产出量化到可考核、可激励。</div><span class="c-tag mono">加盟拓展</span></div>
+    <div class="card reveal"><div class="c-idx mono">13 · S3</div><div class="c-name serif">《价值驱动加盟选址》署名课件</div><div class="c-desc">8 大举措 ＋ 平台运营机制 ＋ 拓展陪跑知识库，效率先锋大赛分享作品。</div><span class="c-tag mono">加盟拓展</span></div>
+    <div class="card reveal"><div class="c-idx mono">14 · S3</div><div class="c-name serif">90 天转身计划 ＋ 金种子项目</div><div class="c-desc">业务 / 思想双导师制：半月产出见习课长、年度成为见习部长的人才流水线。</div><span class="c-tag mono">加盟拓展</span></div>
+  </div>
+</section>
+
+<!-- ============ S4 ============ -->
+<section class="chap wrap">
+  <div class="chap-head reveal">
+    <div class="chap-no serif">S4</div>
+    <div>
+      <h2 class="chap-name serif">用户运营与经营操盘</h2>
+      <div class="chap-period mono">2024.11 — 2026.02 · 山东用户营销 → 广东核心商圈部长</div>
+    </div>
+  </div>
+  <p class="chap-intro reveal">阶段概述：从课级到部级，扛过亿元级盘子的完整年度 KPI。</p>
+  <div class="bars">
+    <div class="bar reveal hot"><div class="bar-top"><span class="bar-label">年度商品销售额</span><span class="bar-val">4.26 亿 · 100.5%</span></div><div class="bar-track"><div class="bar-fill" style="--w:100%"></div></div></div>
+    <div class="bar reveal"><div class="bar-top"><span class="bar-label">外卖日均非烟完成率</span><span class="bar-val">137%（185 元）</span></div><div class="bar-track"><div class="bar-fill" style="--w:88%"></div></div></div>
+    <div class="bar reveal"><div class="bar-top"><span class="bar-label">会员销售占比</span><span class="bar-val">58%（+3pct）</span></div><div class="bar-track"><div class="bar-fill" style="--w:58%"></div></div></div>
+  </div>
+  <div class="cards">
+    <div class="card reveal"><div class="c-idx mono">15 · S4</div><div class="c-name serif">核心商圈攻坚战项目管理套表</div><div class="c-desc">S 级项目 APMO 总控：11 个板块里程碑、KCP 关键检查点、交付件封装模板。</div><span class="c-tag mono">经营操盘</span></div>
+    <div class="card reveal"><div class="c-idx mono">16 · S4</div><div class="c-name serif">《都选C》用户营销工具</div><div class="c-desc">7+1 主题营销产品族：三件套 / 正面架 / 11 场景 / 每日主题 / 应节增补 / 会员多券码。</div><span class="c-tag mono">经营操盘</span></div>
+    <div class="card reveal"><div class="c-idx mono">17 · S4</div><div class="c-name serif">智能音频统一推广全案（业务 owner）</div><div class="c-desc">24 店 30 天实测来客与交易双增、广告营收破 0（内部测试口径）；设备进入建店设备清单，配套开业 11 步 ＋ 半月档 10 步 SOP。</div><span class="c-tag mono">经营操盘</span></div>
+    <div class="card reveal"><div class="c-idx mono">18 · S4</div><div class="c-name serif">营销 × 广告刊例方案</div><div class="c-desc">广告刊例 0 突破，单品牌单月增收 4 万元，打通公司广告收入路径。</div><span class="c-tag mono">经营操盘</span></div>
+    <div class="card reveal"><div class="c-idx mono">19 · S4</div><div class="c-name serif">三方全店智能共创项目</div><div class="c-desc">联合项目治理机制成员，WBS 四级项目管理套表，拉通三方资源完成调研与方案。</div><span class="c-tag mono">经营操盘</span></div>
+  </div>
+</section>
+
+<!-- ============ S5 ============ -->
+<section class="chap wrap">
+  <div class="chap-head reveal">
+    <div class="chap-no serif">S5</div>
+    <div>
+      <h2 class="chap-name serif">公关与品牌体系</h2>
+      <div class="chap-period mono">2026.02 — 至今 · 首任公共关系部部长</div>
+    </div>
+  </div>
+  <p class="chap-intro reveal">阶段概述：半年建成一套覆盖 4 万+门店的体系——危机扛过、制度留下、商业化开张。</p>
+  <div class="bars">
+    <div class="bar reveal hot"><div class="bar-top"><span class="bar-label">日负面压降<span class="bar-tag">（内部监测口径）</span></span><span class="bar-val">5,030 → 178 条</span></div><div class="bar-track"><div class="bar-fill" style="--w:96%"></div></div></div>
+    <div class="bar reveal"><div class="bar-top"><span class="bar-label">舆情闭环率<span class="bar-tag">（内部监测口径）</span></span><span class="bar-val">40% → 82%</span></div><div class="bar-track"><div class="bar-fill" style="--w:82%"></div></div></div>
+    <div class="bar reveal"><div class="bar-top"><span class="bar-label">全国公关岗网络</span><span class="bar-val">26 大区</span></div><div class="bar-track"><div class="bar-fill" style="--w:78%"></div></div></div>
+  </div>
+  <div class="cards">
+    <div class="card reveal"><div class="c-idx mono">20 · S5</div><div class="c-name serif">L1-L4 品牌传播流程体系 V1.0</div><div class="c-desc">4 战略域 × 16 核心流程 × 40 作业程序 × 28 工具表单——部门未来 3-5 年的运作底盘。</div><span class="c-tag mono">公关体系</span></div>
+    <div class="card reveal"><div class="c-idx mono">21 · S5</div><div class="c-name serif">危机管理手册 V2.0 及 T/W 工具包</div><div class="c-desc">声明模板 / 高管口径卡 / 动态 FAQ / 时效追踪表 / 一致度监测仪表盘——危机发声全场景覆盖。</div><span class="c-tag mono">公关体系</span></div>
+    <div class="card reveal"><div class="c-idx mono">22 · S5</div><div class="c-name serif">52 周传播日历与正面专栏</div><div class="c-desc">全年传播节奏的总调度表，正面内容供给常态化。</div><span class="c-tag mono">公关体系</span></div>
+    <div class="card reveal"><div class="c-idx mono">23 · S5</div><div class="c-name serif">全媒体商业化（RMN）交付件 1-7</div><div class="c-desc">5.5 万屏 / 音频 / 社群资源确权台账、广告产品手册与刊例、联通宽带门店试点签约。</div><span class="c-tag mono">公关体系</span></div>
+    <div class="card reveal"><div class="c-idx mono">24 · S5</div><div class="c-name serif">门店服务口碑保卫战专项全套（18 份）</div><div class="c-desc">三色分流卡 / 分角色 SOP / 培训题库 / 总部稽核——预防到处置到考核的完整闭环。</div><span class="c-tag mono">公关体系</span></div>
+    <div class="card reveal"><div class="c-idx mono">25 · S5</div><div class="c-name serif">重大投诉事件研判 00-08 系列</div><div class="c-desc">事实核查底稿、跨部门合审决策卡、对外口径库、授权排查台账——合规处置全链条。</div><span class="c-tag mono">公关体系</span></div>
+    <div class="card reveal"><div class="c-idx mono">26 · S5</div><div class="c-name serif">职业打假专项培训课件 V2.3</div><div class="c-desc">全国一线分发 ＋ 分区域宣导 ＋ 题库考核 ＋ 案例库，把事件经验变成标准化防御能力。</div><span class="c-tag mono">公关体系</span></div>
+    <div class="card reveal"><div class="c-idx mono">27 · S5</div><div class="c-name serif">大型活动传播双件套</div><div class="c-desc">行业顶级大会 GRAI 传播复盘 ＋ 29 周年伙伴大会管理套表与复盘（20 余天 · 850 人 · 300+ 发布）。</div><span class="c-tag mono">公关体系</span></div>
+    <div class="card reveal"><div class="c-idx mono">28 · S5</div><div class="c-name serif">外部资源底座与竞对应对体系</div><div class="c-desc">媒体资源管理库 / 政府关系经营台账 / 账号矩阵方案；攻守结合策略与 SEO 防守五件套。</div><span class="c-tag mono">公关体系</span></div>
+  </div>
+</section>
+
+<!-- ============ 横向资产 ============ -->
+<section class="chap wrap">
+  <div class="chap-head reveal">
+    <div class="chap-no serif">AI</div>
+    <div>
+      <h2 class="chap-name serif">横向资产 · AI 与前瞻</h2>
+      <div class="chap-period mono">Cross-Stage · 贯穿五段</div>
+    </div>
+  </div>
+  <p class="chap-intro reveal">每段经历都留下可复用的知识资产；AI 是把这些资产串起来的那根线。</p>
+  <div class="cards">
+    <div class="card reveal"><div class="c-idx mono">29 · AI</div><div class="c-name serif">AI 舆情预警项目（APM）</div><div class="c-desc">立项预估舆情响应 4 小时 → 15 分钟、危机损失降低 80%（立项预估）——把 AI 引入公关治理。</div><span class="c-tag mono">横向资产</span></div>
+    <div class="card reveal"><div class="c-idx mono">30 · AI</div><div class="c-name serif">品牌安全预警系统 PRD ＋ 公关 Agent 规划</div><div class="c-desc">舆情管理从「事后处置」升级为「事前预警」；AI 公关工作流的顶层设计。</div><span class="c-tag mono">横向资产</span></div>
+    <div class="card reveal"><div class="c-idx mono">31 · AI</div><div class="c-name serif">62 个连锁零售 AI Skills 原型库</div><div class="c-desc">一手封装的内容生产 / 监测分析 / 流程作业技能集，外加 4 个知识管理方法论 skill。</div><span class="c-tag mono">横向资产</span></div>
+    <div class="card reveal"><div class="c-idx mono">32 · AI</div><div class="c-name serif">海外传播周计划与线索清单</div><div class="c-desc">出海品牌叙事从 0 到 1：周计划规范节奏，线索清单沉淀选题与渠道。</div><span class="c-tag mono">横向资产</span></div>
+    <div class="card reveal"><div class="c-idx mono">33 · AI</div><div class="c-name serif">国际品牌修复战略评审系列</div><div class="c-desc">引入国际顶级公关代理的完整评审链：必要性分析、叙事落地计划、脱敏案例对标。</div><span class="c-tag mono">横向资产</span></div>
+  </div>
+
+  <a class="back reveal" href="index.html">
+    <div class="b-eyebrow mono">← Back to Index</div>
+    <div class="b-title serif">返回个人主页</div>
+  </a>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="f-title serif">马先生·Felix · 作品全集</div>
+    <p class="f-line">
+      电话 / 微信：176 2059 0302 ｜ 邮箱：mazhian@yeah.net ｜ 广东 · 东莞<br>
+      全部交付物均有原始文档、台账或会议纪要支撑，面试现场可按编号调阅。
+    </p>
+    <p class="f-disc">
+      脱密声明：本页为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；标注「内部监测口径 / 内部测试口径 / 立项预估」的数据仅作能力佐证；6 项人事档案为权威佐证，不展示条目本身，可现场核验。
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  function onScroll(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';
+  }
+  document.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{threshold:.15,rootMargin:'0px 0px -5% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+})();
+</script>
+</body>
+</html>
