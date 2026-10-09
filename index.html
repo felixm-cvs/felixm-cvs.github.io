@@ -30,16 +30,13 @@
   .serif{font-family:"Songti SC","STSong","Noto Serif SC","Noto Serif CJK SC","SimSun",serif}
   .mono{font-family:ui-monospace,"SF Mono","Cascadia Mono","Courier New",monospace}
 
-  /* ---------- scroll progress ---------- */
   #progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red);z-index:99}
 
-  /* ---------- layout ---------- */
   .wrap{max-width:720px;margin:0 auto;padding:0 22px}
   section{padding:56px 0 8px}
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
   .reveal.in{opacity:1;transform:none}
 
-  /* ---------- section header ---------- */
   .sec-head{border-top:1px solid var(--ink);padding-top:14px;margin-bottom:34px}
   .sec-eyebrow{display:flex;justify-content:space-between;align-items:baseline;
     font-size:10px;letter-spacing:.18em;color:var(--ink-3);text-transform:uppercase}
@@ -80,6 +77,7 @@
   .stat .seg{display:block;font-size:9.5px;letter-spacing:.14em;color:var(--red);margin-bottom:9px;text-transform:uppercase;font-weight:600}
   .stat .num{font-size:44px;font-weight:900;line-height:1.05;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
   .stat .num .unit{font-size:20px;font-weight:700;margin-left:2px}
+  .stat .num.txt{font-size:32px;line-height:1.25}
   .stat.hot .num{color:var(--red)}
   .stat .cap{font-size:12.5px;font-weight:700;margin-top:10px;line-height:1.5}
   .stat .sub{font-size:11px;color:var(--ink-3);margin-top:4px;line-height:1.55}
@@ -159,6 +157,7 @@
   @media(min-width:640px){
     .cover-name{font-size:64px}
     .stat .num{font-size:52px}
+    .stat .num.txt{font-size:38px}
     .sec-title{font-size:34px}
     .quote .q-text{font-size:27px}
   }
@@ -182,7 +181,7 @@
     <div class="cover-kicker mono">Personal Portfolio — Redacted</div>
     <h1 class="cover-name serif">马先生·Felix</h1>
     <div class="cover-role serif">万店连锁 · 五段价值链复合型零售操盘手</div>
-    <div class="cover-anon">某头部便利店品牌 首任公共关系负责人（4 万+门店，中国便利店行业门店数第一）</div>
+    <div class="cover-anon">国内头部连锁便利店集团（万店规模，行业门店数第一）· 首任公共关系负责人</div>
     <p class="cover-prop">
       <em>公关科班</em>（广告学本科 ＋ 新闻学硕士）× <em>甲乙方双背景</em>（国际公关与舆情机构训练 ＋ 实业集团近五年「一人公关部」）× <em>五年五段价值链</em>（数字化基建 → 总部管理 → 加盟拓展 → 用户运营与经营操盘 → 公关与品牌体系）。
       每一段，都留下一套<em>至今沿用的制度、工具或系统</em>。
@@ -192,7 +191,7 @@
   <div>
     <div class="kv-grid">
       <div class="kv"><span class="k mono">Career</span><span class="v">13 年职场｜公关科班（广告学 ＋ 新闻学硕士）｜甲乙方双背景</span></div>
-      <div class="kv"><span class="k mono">Focus</span><span class="v">连锁零售 · 品牌公关／用户运营／加盟增长——五年五段价值链的复合型一号位人选</span></div>
+      <div class="kv"><span class="k mono">Focus</span><span class="v">连锁零售 · 品牌公关（主线）／用户运营／加盟增长／经营管理——五年五段价值链的复合型一号位人选</span></div>
       <div class="kv"><span class="k mono">Base</span><span class="v">广东 · 东莞（一线城市优先，机会城市亦可）</span></div>
       <div class="kv"><span class="k mono">Report to</span><span class="v">管理层（总经理 / 常务副总级）</span></div>
       <div class="kv"><span class="k mono">Education</span><span class="v">广告学本科 → 新闻学硕士 · 英语 CET-6 · 粤语母语</span></div>
@@ -216,9 +215,9 @@
     </div>
     <div class="stat reveal">
       <span class="seg mono">S1 · 数字化基建</span>
-      <div class="num serif"><span data-count="25000">0</span><span class="unit">场/月</span></div>
+      <div class="num txt serif">数万级<span class="unit">场/月</span></div>
       <div class="cap">智能会议系统 PMO</div>
-      <div class="sub">纪要归档与任务分发应用于公司 200+ 大小项目</div>
+      <div class="sub">纪要归档与任务分发应用于数百个项目</div>
     </div>
     <div class="stat reveal">
       <span class="seg mono">S1 · 数字化基建</span>
@@ -228,7 +227,7 @@
     </div>
     <div class="stat reveal">
       <span class="seg mono">S2 · 总部职能</span>
-      <div class="num serif"><span data-count="400">0</span><span class="unit">+ 条</span></div>
+      <div class="num txt serif">数百<span class="unit">+ 条</span></div>
       <div class="cap">知识词条建设</div>
       <div class="sub">词典—订阅号—知识库—服务台—搜索全链条</div>
     </div>
@@ -252,26 +251,26 @@
     </div>
     <div class="stat hot reveal">
       <span class="seg mono">S4 · 经营操盘</span>
-      <div class="num serif"><span data-count="4.26" data-decimal="2">0</span><span class="unit">亿元</span></div>
+      <div class="num txt serif">亿元级</div>
       <div class="cap">年度商品销售额（完成率 100.5%）</div>
-      <div class="sub">会员销售占比提升至 58% · 双节会员非烟 2,979 万元</div>
+      <div class="sub">会员销售占比提升至 58% · 造节系列累计数千万级</div>
     </div>
     <div class="stat reveal">
       <span class="seg mono">S4 · 经营操盘</span>
       <div class="num serif"><span data-count="137">0</span><span class="unit">%</span></div>
-      <div class="cap">外卖日均非烟完成率（185 元）</div>
-      <div class="sub">新店日均非烟 3,414 元（完成率 130%）</div>
+      <div class="cap">外卖日均非烟完成率</div>
+      <div class="sub">新店日均非烟完成率 130%</div>
     </div>
     <div class="stat hot reveal">
       <span class="seg mono">S5 · 公关体系</span>
-      <div class="num serif"><span data-count="178">0</span><span class="unit">条</span></div>
-      <div class="cap">日负面压降终点（峰值 5,030 条起）</div>
+      <div class="num txt serif">超九成</div>
+      <div class="cap">负面声量压降幅度</div>
       <div class="sub">逐周递减 · 闭环率 40% → 82%</div>
       <span class="tag mono">内部监测口径</span>
     </div>
     <div class="stat reveal">
       <span class="seg mono">S5 · 公关体系</span>
-      <div class="num serif" style="font-size:34px;line-height:1.2">L1–L4</div>
+      <div class="num txt serif">L1–L4</div>
       <div class="cap">品牌传播流程体系</div>
       <div class="sub">4 战略域 × 16 核心流程 × 40 作业程序 × 28 工具表单</div>
     </div>
@@ -300,24 +299,24 @@
       <div class="tl-desc">公司与地块收购法律文书起草、政府事务沟通、VI 系统与形象资料搭建、兄弟公司商务与法务管理、总部筹建购地与招投标——一个人扛起一家实业集团的公关与总助全盘。</div>
     </div>
 
-    <div class="tl-group mono">某头部便利店品牌 · 五年五段价值链 · 2021 — 至今</div>
+    <div class="tl-group mono">国内头部连锁便利店集团 · 五年五段价值链 · 2021 — 至今</div>
     <div class="tl-item reveal">
       <div class="tl-date mono">S1 · 2021.03 — 2022.09</div>
       <div class="tl-role serif">总经理助理 → 数据资产管理</div>
       <div class="tl-org mono">数字化基建 · 总经办 → 数据体系</div>
-      <div class="tl-desc">智能会议系统 PMO——每月 25,000 场会议在线召开，纪要归档与任务分发应用于 200+ 项目。<b>信息总部从 0 到 1 首份纪要记录人，《数据资产管控流程》等 5 份流程文件署名</b>；BI 驾驶舱项目交互设计与业务代表。</div>
+      <div class="tl-desc">智能会议系统 PMO——每月数万场会议在线召开，纪要归档与任务分发应用于数百个项目。<b>信息总部从 0 到 1 首份纪要记录人，《数据资产管控流程》等 5 份流程文件署名</b>；主导跨体系组织交接、启动公司数据资产整理，BI 驾驶舱与集成物流两大公司级项目启动参与者、驾驶舱交互设计与业务代表。</div>
     </div>
     <div class="tl-item reveal">
       <div class="tl-date mono">S2 · 2022.09 — 2023.03</div>
       <div class="tl-role serif">董事长助理</div>
       <div class="tl-org mono">总部职能 · 总经理办公室</div>
-      <div class="tl-desc"><b>「铁三角会议」纪要记录人，全公司年度述职模板起草人</b>，分管会议管理部门；近距离参与公司最高层决策。</div>
+      <div class="tl-desc"><b>「铁三角会议」纪要记录人，全公司年度述职模板起草人</b>，分管会议管理部门；搭建经营班子会议召集—纪要—决议跟踪机制，推动企业办公平台整体迁移并完成初期培训，近距离参与公司最高层决策。</div>
     </div>
     <div class="tl-item reveal">
       <div class="tl-date mono">S2 · 2023.03 — 2023.07</div>
       <div class="tl-role serif">知识管理课长（兼企业传播部负责人）</div>
       <div class="tl-org mono">总部职能 · 文化传播中心</div>
-      <div class="tl-desc"><b>文档编码分级制度署名起草——沿用至今</b>；建成 400+ 知识词条与 8 大体系知识管理员网络；《传播体系规划》署名。</div>
+      <div class="tl-desc"><b>文档编码分级制度署名起草——沿用至今</b>；建成数百条知识词条与 8 大体系知识管理员网络；创建总部订阅号体系（沿用至今）、发起首届效率先锋大赛；《传播体系规划》署名。</div>
     </div>
     <div class="tl-item reveal">
       <div class="tl-date mono">S3 · 2023.07 — 2024.11</div>
@@ -329,13 +328,13 @@
       <div class="tl-date mono">S4 · 2024.11 — 2026.02</div>
       <div class="tl-role serif">用户运营部部长</div>
       <div class="tl-org mono">经营操盘 · 山东大区 → 广东核心商圈</div>
-      <div class="tl-desc">山东用户营销：月度来客数 +31%、会员日均非烟销售同比 +80%。<b>广东核心商圈年度操盘：商品销售额 4.26 亿元（100.5%）、外卖日均非烟 185 元（137%）、新店日均 3,414 元（130%）、会员销售占比 58%、双节大会员非烟 2,979 万元</b>。S 级项目署名 APMO，智能音频业务 owner；培养 1 名继任者 ＋ 1 名金种子。</div>
+      <div class="tl-desc">山东用户营销：月度来客数 +31%、会员日均非烟销售同比 +80%。<b>广东核心商圈年度操盘：亿元级商品销售额（完成率 100.5%）、外卖完成率 137%、新店完成率 130%、会员销售占比 58%、双节造节数千万级</b>。S 级项目署名 APMO，智能音频业务 owner；培养 1 名继任者 ＋ 1 名金种子。</div>
     </div>
     <div class="tl-item now reveal">
       <div class="tl-date mono">S5 · 2026.02 — 至今</div>
       <div class="tl-role serif">公共关系部部长（首任）</div>
       <div class="tl-org mono">公关与品牌体系 · 直接向管理层汇报</div>
-      <div class="tl-desc">从 0 到 1 搭建覆盖 4 万+门店的公共关系体系：<b>L1-L4 流程体系（4×16×40×28）、全国 26 大区公关岗网络、5.5 万屏资源确权</b>；负面舆情从峰值 5,030 条逐周降至 178 条、闭环率 40% → 82%（内部监测口径），敏感舆情 48 小时下架 / 限流。<b>缺编约 5 人下 1 人顶 3 人负荷，统筹 5 条工作线</b>。</div>
+      <div class="tl-desc">从 0 到 1 搭建覆盖万店级网络的公共关系体系：<b>L1-L4 流程体系（4×16×40×28）、全国大区公关岗网络、万块级屏幕资源确权</b>；负面声量压降超九成、闭环率 40% → 82%（内部监测口径），敏感舆情 48 小时下架 / 限流。<b>缺编下 1 人顶 3 人负荷，统筹 5 条工作线</b>。</div>
     </div>
   </div>
 </section>
@@ -355,9 +354,9 @@
     </div>
     <p class="case-claim">段 1–2 的答卷：把总部的「人治经验」换成「系统与制度」。</p>
     <ul>
-      <li><b>智能会议系统 PMO：</b>从试点到全国复制，每月 25,000 场会议在系统召开，纪要归档与任务分发应用于公司 200+ 大小项目</li>
+      <li><b>智能会议系统 PMO：</b>从试点到全国复制，每月数万场会议在系统召开，纪要归档与任务分发应用于公司数百个大小项目</li>
       <li><b>文档编码分级制度：</b>署名起草管理文件制度与密级划分原则，规范全公司文档命名、分级与归档——沿用至今（组织档案「组织回馈」栏确认）</li>
-      <li><b>知识管理一期：</b>400+ 知识词条，拉通词典—订阅号—知识库—服务台—全局搜索链条；8 大体系知识管理员网络</li>
+      <li><b>知识管理一期：</b>数百条知识词条，拉通词典—订阅号—知识库—服务台—全局搜索链条；8 大体系知识管理员网络；总部订阅号体系创建并沿用至今</li>
       <li><b>流程与数据底盘：</b>《数据资产管控流程》署名起草（三版迭代），同期 5 份流程文件；数据IT 流程梳理覆盖 L1-L4 形成公司流程地图</li>
       <li><b>高层协同：</b>铁三角会议纪要记录人、全公司年度述职模板起草人；协作平台引入宣导人、首届效率先锋大赛发起人</li>
     </ul>
@@ -389,16 +388,16 @@
   <article class="case reveal">
     <div class="case-top">
       <span class="case-no mono">Case — 03</span>
-      <h3 class="case-title serif">用户运营与 4.26 亿经营操盘</h3>
+      <h3 class="case-title serif">用户运营与亿元级经营操盘</h3>
     </div>
     <p class="case-claim">不是「做过运营」，是扛过亿元级盘子的完整年度 KPI。</p>
     <ul>
-      <li><b>年度大盘：</b>商品销售额 4.26 亿元（完成率 100.5%）；会员销售占比提升至 58%（+3pct）；客户满意度 100%</li>
-      <li><b>结构性增长：</b>外卖日均非烟 185 元（完成率 137%）、新店日均非烟 3,414 元（130%）；外卖大盘 2,800 万元（达标率 121%）</li>
-      <li><b>造节营销：</b>双节大会员非烟销售 2,979 万元；熟食促销 2,400 万、风幕柜活动 1,400 万；全月档环比旧档提升出货 58 万</li>
+      <li><b>年度大盘：</b>商品销售额达亿元级（完成率 100.5%）；会员销售占比提升至 58%；客户满意度满分</li>
+      <li><b>结构性增长：</b>外卖日均非烟完成率 137%、新店日均非烟完成率 130%；外卖大盘达成率 121%</li>
+      <li><b>造节营销：</b>双节大会员、熟食促销、风幕柜活动组成的造节系列累计数千万级</li>
       <li><b>山东用户营销：</b>《都选C》工具承载 7+1 主题营销，月度来客数 +31%、年度 +15%，会员日均非烟销售与非烟来客同比 +80%</li>
-      <li><b>智能音频新业务：</b>任业务 owner，24 店 30 天实测——非烟来客 +4%、会员交易 +6%、广告营收破 0 <span class="m">（内部测试口径）</span>；设备进入建店设备清单</li>
-      <li><b>项目牵引：</b>S 级「核心商圈攻坚战」APMO（立项文件署名），11 个板块里程碑交付；三方共创项目联合治理成员；培养 1 名继任者 ＋ 1 名金种子</li>
+      <li><b>智能音频新业务：</b>任业务 owner，多店实测——非烟来客 +4%、会员交易 +6%、广告营收从零破零 <span class="m">（内部测试口径）</span>；设备进入建店设备清单</li>
+      <li><b>项目牵引：</b>S 级「核心商圈攻坚战」APMO（立项文件署名），十余个板块里程碑交付；三方共创项目联合治理成员；培养 1 名继任者 ＋ 1 名金种子</li>
     </ul>
     <div class="case-result">
       经营视角是公关的底盘：看懂损益表的公关一号位，才知道每一次发声值多少钱。
@@ -411,13 +410,13 @@
       <span class="case-no mono">Case — 04</span>
       <h3 class="case-title serif">公关危机与体系：从 0 到 1 的攻防</h3>
     </div>
-    <p class="case-claim">首任公共关系部长的半年：两起 P0 级危机 ＋ 一套覆盖全国的网络。</p>
+    <p class="case-claim">首任公共关系部长的半年：两起顶级危机 ＋ 一套覆盖全国的网络。</p>
     <ul>
-      <li><b>315 假烟危机（P0 级）：</b>SEIR 测算 R0≈6 判定超级传播级 <span class="m">（内部监测口径）</span>；13 小时发出首份官方声明；「四项零容忍」三日负面降幅 75.9% <span class="m">（内部监测口径）</span>；606 家问题加盟商解约 / 整改通报；39 天消退，日负面 14,391 → 9 条 <span class="m">（内部监测口径）</span></li>
+      <li><b>315 假烟危机（最高级别）：</b>SEIR 模型判定超级传播级、冷处理无效 <span class="m">（内部监测口径）</span>；13 小时发出首份官方声明；「四项零容忍」后三日降幅超七成 <span class="m">（内部监测口径）</span>；数百家问题加盟商解约 / 整改通报；39 天消退，日负面降至个位数 <span class="m">（内部监测口径）</span></li>
       <li><b>608 食安专项：</b>提前 2 个月预警，事件后 24 小时发起「清源行动」；两起重大危机均未爆发二次舆情</li>
-      <li><b>舆情日清：</b>负面从峰值 5,030 条逐周降至 178 条，闭环率 40% → 82% <span class="m">（内部监测口径）</span>；敏感舆情 48 小时下架 / 限流</li>
+      <li><b>舆情日清：</b>负面声量压降超九成，闭环率 40% → 82% <span class="m">（内部监测口径）</span>；敏感舆情 48 小时下架 / 限流；月均监测十万级条</li>
       <li><b>制度底盘：</b>L1-L4 流程体系（4×16×40×28）；《公共关系管理制度》V2.0 黄金 12 小时作战机制 ＋ 四级预警 ＋ P0-P3 分级</li>
-      <li><b>组织网络：</b>全国 26 大区公关岗网络 ＋ 18 实体单位公关岗；缺编约 5 人、媒介岗空缺下 1 人顶 3 人负荷，统筹 5 条工作线</li>
+      <li><b>组织网络：</b>全国大区公关岗网络 ＋ 实体单位公关岗三级体系；缺编下 1 人顶 3 人负荷，统筹 5 条工作线</li>
     </ul>
     <div class="case-result">
       危机的终点不是热搜降下来，而是体系建起来——下次再有危机，照表执行。
@@ -432,14 +431,15 @@
     </div>
     <p class="case-claim">把屏幕变成资产，把 AI 变成防线——公关不只是成本中心。</p>
     <ul>
-      <li><b>RMN 商业化：</b>5.5 万+屏幕资源确权与台账，提炼 5 个广告产品；广告刊例实现 0 突破、单品牌单月增收 4 万元；联通宽带门店试点签约；年刊例收入预期 140 万+ <span class="m">（内部，任项目 PM）</span></li>
-      <li><b>「换锚点」传播：</b>行业顶级大会期间以行业最大规模公开实证嵌入官方叙事——总曝光 273 万+，481 条收录 100% 正面 / 中性零负面，批评媒体转向发正面深度稿</li>
-      <li><b>29 周年伙伴大会：</b>20 余天极限筹备（行业常规 3 个月），主会场约 850 人，费用 157.5 万控制在 160 万预算内；媒体发布 300+ 条、通稿带动 150+ 家转载</li>
-      <li><b>AI 舆情预警：</b>任 AI 舆情预警项目 APM——立项预估舆情响应 4 小时 → 15 分钟、危机损失降低 80% <span class="m">（立项预估）</span>；品牌安全预警系统 PRD ＋ 公关 Agent 全面规划</li>
+      <li><b>RMN 商业化：</b>万块级屏幕资源确权与台账，提炼 5 个广告产品；广告刊例从零破零、跑通增收模型；运营商宽带门店试点签约；百万级刊例预期 <span class="m">（内部，任项目 PM）</span></li>
+      <li><b>「换锚点」传播：</b>行业顶级大会期间以行业最大规模公开实证嵌入官方叙事——总曝光数百万级，数百条收录 100% 正面 / 中性零负面，批评媒体转向发正面深度稿</li>
+      <li><b>集团周年庆伙伴大会：</b>20 余天极限筹备（行业常规 3 个月），主会场近千人规模，预算内高效执行；媒体发布数百条、上百家媒体转载</li>
+      <li><b>品牌内容矩阵：</b>鸿蒙智慧零售标杆传播系列、跨省洪灾救援五地协同纪实、千家门店公益助学联动、出海品牌叙事启动方案</li>
+      <li><b>AI 舆情预警：</b>任 AI 舆情预警项目 APM——立项预估响应时效与止损能力量级提升 <span class="m">（立项预估）</span>；品牌安全预警系统 PRD ＋ 公关 Agent 全面规划</li>
       <li><b>工具资产：</b>一手封装 62 个连锁零售场景的 AI Skills，覆盖内容生产、监测分析、流程作业</li>
     </ul>
     <div class="case-result">
-      传播势能 = 总部内容力 × 门店节点数 × 时机选择——4 万门店是纯线上品牌买不到的分布式触点。
+      传播势能 = 总部内容力 × 门店节点数 × 时机选择——万店网络是纯线上品牌买不到的分布式触点。
     </div>
   </article>
 </section>
@@ -521,7 +521,7 @@
   <a class="entry reveal" href="works.html">
     <div class="e-eyebrow mono">Works — Deliverables Archive</div>
     <div class="e-title serif">查看完整作品全集 →</div>
-    <div class="e-sub">五段价值链 ＋ 横向资产 · 约 30 项可点名交付物，逐项附一句话价值点</div>
+    <div class="e-sub">五段价值链 ＋ 横向资产 · 50+ 项可点名交付物，逐项附一句话价值点</div>
     <span class="e-arrow serif">→</span>
   </a>
 </section>
@@ -539,14 +539,13 @@
     <a class="phone serif reveal" href="tel:17620590302">176 2059 0302<small class="mono">CALL / WECHAT — 马先生·Felix，求职专用号，与微信同号</small></a>
     <a class="mail reveal" href="mailto:mazhian@yeah.net">mazhian@yeah.net</a>
     <p class="disclaimer reveal">
-      脱密声明：本作品集为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；标注「内部监测口径 / 内部测试口径 / 立项预估 / 内部」的数据仅作能力佐证，原始台账、通报文件与人事档案可于面试现场核验。公开事实部分均可公开检索。
+      脱密声明：本作品集为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；经营与舆情数据均已做概述化 / 比率化处理，标注「内部监测口径 / 内部测试口径 / 立项预估 / 内部」的内容仅作能力佐证，原始台账、通报文件与人事档案可于面试现场核验。
     </p>
   </div>
 </footer>
 
 <script>
 (function(){
-  /* scroll progress */
   var bar=document.getElementById('progress');
   function onScroll(){
     var h=document.documentElement;
@@ -556,7 +555,6 @@
   document.addEventListener('scroll',onScroll,{passive:true});
   onScroll();
 
-  /* reveal on view */
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
@@ -564,7 +562,6 @@
   },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 
-  /* number count-up */
   function animate(el){
     var target=parseFloat(el.getAttribute('data-count'));
     var dec=parseInt(el.getAttribute('data-decimal')||'0',10);
@@ -572,7 +569,7 @@
     function frame(t){
       if(!t0)t0=t;
       var p=Math.min((t-t0)/dur,1);
-      var e=1-Math.pow(1-p,3); /* easeOutCubic */
+      var e=1-Math.pow(1-p,3);
       el.textContent=(target*e).toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g,',');
       if(p<1)requestAnimationFrame(frame);
       else el.textContent=target.toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g,',');
