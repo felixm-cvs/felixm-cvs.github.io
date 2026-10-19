@@ -31,10 +31,16 @@
   .topnav a:hover{color:var(--red)}
   .topnav .t-meta{font-size:10px;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase}
   .foot{background:var(--ink);color:var(--paper);margin-top:64px;padding:44px 0 34px}
+  .foot .f-row{display:flex;gap:26px;align-items:flex-start}
+  .foot .f-main{flex:1;min-width:0}
   .foot .f-title{font-size:20px;font-weight:800}
   .foot .f-line{font-size:12.5px;color:rgba(245,240,230,.7);margin-top:12px;line-height:1.9}
   .foot .f-disc{margin-top:26px;padding-top:14px;border-top:1px solid rgba(245,240,230,.16);
     font-size:10.5px;color:rgba(245,240,230,.42);line-height:1.9}
+  .foot .f-qrbox{flex:none;text-align:center}
+  .foot .f-qr{width:88px;height:88px;display:block;border:1px solid rgba(245,240,230,.3)}
+  .foot .f-qrcap{font-size:9.5px;letter-spacing:.14em;color:rgba(245,240,230,.55);margin-top:6px}
+  @media(max-width:640px){ .foot .f-qr{width:72px;height:72px} }
   /* 右侧悬浮导航 */
   .fnav{position:fixed;right:12px;bottom:16px;z-index:90;display:flex;flex-direction:column;gap:5px}
   .fnav a{display:flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 7px;
@@ -69,6 +75,8 @@
   .fp-body{font-size:13.5px;color:var(--ink-2);line-height:1.85}
   .fp-body ul{margin-left:1.1em}
   .fp-body li{margin:2px 0}
+  .fp-note{margin-top:14px;font-size:11.5px;color:var(--ink-3);letter-spacing:.03em}
+  .fp-note b{color:var(--red)}
   .whatis{margin-top:34px;border:1px solid var(--ink);padding:22px 20px 18px;background:var(--paper-dim)}
   .whatis .w-kicker{font-size:10px;letter-spacing:.24em;color:var(--red);text-transform:uppercase;font-weight:700}
   .whatis .w-text{font-size:13.5px;color:var(--ink);margin-top:10px;line-height:1.85}
@@ -133,6 +141,7 @@
   </ul></div></div></div>
   <div class="fp-item reveal"><div class="fp-no serif">04</div><div><div class="fp-label">结果</div><div class="fp-body">为后续多项目并行管理提供组织级底座——此后的公司级项目都跑在这套规则上。</div></div></div>
   <div class="fp-item reveal"><div class="fp-no serif">05</div><div><div class="fp-label">证据</div><div class="fp-body">制度文本与项目知识库结构记录留存，可现场核验。</div></div></div>
+  <p class="fp-note reveal">提示：面试现场报编号 <b>d12</b>，即可调阅本项原始文档核验。</p>
 </section>
 
 <section class="wrap" id="whatis">
@@ -145,15 +154,21 @@
 </section>
 
 <footer class="foot">
-  <div class="wrap">
-    <div class="f-title serif">马先生·Felix · 作品全集</div>
-    <p class="f-line">
-      电话 / 微信：176 2059 0302 ｜ 邮箱：mazhian@yeah.net ｜ 广东 · 东莞<br>
-      全部交付物均有原始文档、台账或会议纪要支撑，面试现场可按编号调阅。
-    </p>
-    <p class="f-disc">
-      脱密声明：本页为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；经营数据已按量级概述化处理，比率类指标保留原值；标注“内部监测口径 / 内部测试口径 / 立项预估”的数据仅作能力佐证；6 项人事档案为权威佐证，不展示条目本身，可现场核验。章节题图为风格化装饰，详情页图示均按对应交付物的真实流程与结果绘制。
-    </p>
+  <div class="wrap f-row">
+    <div class="f-main">
+      <div class="f-title serif">马先生·Felix · 作品全集</div>
+      <p class="f-line">
+        电话 / 微信：176 2059 0302 ｜ 邮箱：mazhian@yeah.net ｜ 广东 · 东莞<br>
+        全部交付物均有原始文档、台账或会议纪要支撑，面试现场可按编号调阅。
+      </p>
+      <p class="f-disc">
+        脱密声明：本页为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；经营数据已按量级概述化处理，比率类指标保留原值；标注“内部监测口径 / 内部测试口径 / 立项预估”的数据仅作能力佐证；6 项人事档案为权威佐证，不展示条目本身，可现场核验。章节题图为风格化装饰，详情页图示均按对应交付物的真实流程与结果绘制。
+      </p>
+    </div>
+    <div class="f-qrbox">
+      <img class="f-qr" src="../assets/wechat_qr.jpg" alt="微信二维码">
+      <div class="f-qrcap mono">微信扫码联系</div>
+    </div>
   </div>
 </footer>
 <nav class="fnav mono" aria-label="页内导航">
