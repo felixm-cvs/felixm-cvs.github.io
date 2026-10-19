@@ -63,6 +63,29 @@
     font-size:16.5px;line-height:1.9;color:var(--ink);
   }
   .cover-prop em{font-style:normal;color:var(--red);font-weight:700}
+  .cover-pos{
+    margin-top:20px;padding-top:16px;border-top:2px solid var(--ink);
+    font-size:17.5px;font-weight:800;line-height:1.85;letter-spacing:.02em;
+  }
+  .cover-pos .pos-lead{color:var(--red)}
+
+  /* ---------- capability traits ---------- */
+  .traits{margin-top:36px;border-top:1px solid var(--ink)}
+  .traits-head{display:flex;justify-content:space-between;align-items:baseline;padding-top:10px;
+    font-size:10px;letter-spacing:.18em;color:var(--ink-3);text-transform:uppercase}
+  .traits-head .no{color:var(--red)}
+  .tr-grid{display:grid;grid-template-columns:1fr 1fr;margin-top:4px}
+  .tr-item{padding:14px 14px 12px 0;border-bottom:1px solid var(--line-soft)}
+  .tr-item:nth-child(odd){border-right:1px solid var(--line-soft);padding-right:16px}
+  .tr-item:nth-child(even){padding-left:16px}
+  .tr-item .tr-name{font-size:15px;font-weight:800;letter-spacing:.03em}
+  .tr-item .tr-name::before{content:"";display:inline-block;width:8px;height:8px;background:var(--red);margin-right:8px}
+  .tr-item .tr-desc{font-size:12px;color:var(--ink-2);margin-top:5px;line-height:1.65}
+  @media(max-width:480px){
+    .tr-grid{grid-template-columns:1fr}
+    .tr-item:nth-child(odd){border-right:none;padding-right:0}
+    .tr-item:nth-child(even){padding-left:0}
+  }
   .kv-grid{border-top:1px solid var(--ink)}
   .kv{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line-soft);align-items:baseline}
   .kv .k{font-size:10px;letter-spacing:.16em;color:var(--ink-3);text-transform:uppercase;flex:none;width:76px}
@@ -100,6 +123,9 @@
   .tl-role{font-size:18px;font-weight:800;margin-top:6px;letter-spacing:.02em}
   .tl-org{font-size:11.5px;color:var(--ink-3);margin-top:2px}
   .tl-desc{font-size:13px;color:var(--ink-2);margin-top:8px;line-height:1.7}
+  .tl-trans{margin-top:10px;padding:9px 12px;background:var(--paper-dim);
+    font-size:12px;color:var(--ink-2);line-height:1.65}
+  .tl-trans b{color:var(--ink-3);font-weight:600;margin-right:6px;font-size:10.5px;letter-spacing:.12em}
 
   /* ---------- cases ---------- */
   .case{border-top:1px solid var(--ink);padding:26px 0 30px}
@@ -187,11 +213,23 @@
     <h1 class="cover-name serif">马先生·Felix</h1>
     <div class="cover-role serif">万店连锁 · 五段价值链复合型零售操盘手</div>
     <div class="cover-anon">国内头部连锁便利店集团（万店规模，行业门店数第一）· 首任公共关系负责人</div>
+    <p class="cover-pos serif"><span class="pos-lead">全国门店数第一的连锁便利店品牌，首任公关部长。</span><br>业务出身——选址建店、营运、营销、公关，整条线都跑过；擅长把体系当产品搭：每到一个岗位，就留下一套至今还在运转的工具。</p>
     <p class="cover-prop">
       <em>公关科班</em>（广告学本科 ＋ 新闻学硕士）× <em>甲乙方双背景</em>（国际公关与舆情机构训练 ＋ 实业集团近五年「一人公关部」）× <em>五年五段价值链</em>（数字化基建 → 总部管理 → 加盟拓展 → 用户运营与经营操盘 → 公关与品牌体系）。
       每一段，都留下一套<em>至今沿用的制度、工具或系统</em>。
     </p>
-    <figure class="vhouse reveal"><img src="https://mcnhhno0d6jd.feishuapp.com/app/app_17fmyhfsyt8/assets/value_house.jpg" alt="价值屋：复合型零售操盘手"><figcaption class="mono">VALUE HOUSE — 一张图看懂我的价值结构</figcaption></figure>
+    <figure class="vhouse reveal"><img src="assets/value_house.jpg" alt="价值屋：复合型零售操盘手"><figcaption class="mono">VALUE HOUSE — 一张图看懂我的价值结构</figcaption></figure>
+    <div class="traits reveal">
+      <div class="traits-head mono"><span><span class="no">Traits</span> — 能力标签</span><span>外行也能看懂</span></div>
+      <div class="tr-grid">
+        <div class="tr-item"><div class="tr-name serif">体系搭建者</div><div class="tr-desc">不只把事情做成，还把做法写成制度和工具——人走了，系统还在跑。</div></div>
+        <div class="tr-item"><div class="tr-name serif">危机操盘手</div><div class="tr-desc">公司出大事时接管发声的人：先判断会不会扩散，再决定怎么回应，盯着热度降下来。</div></div>
+        <div class="tr-item"><div class="tr-name serif">经营操盘手</div><div class="tr-desc">扛过完整年度生意指标的人：销售额、会员、外卖、新店，对损益表负责。</div></div>
+        <div class="tr-item"><div class="tr-name serif">方法论产品化</div><div class="tr-desc">凡是重复讲三遍的东西，就做成模板、课件或系统——别人照着就能用。</div></div>
+        <div class="tr-item"><div class="tr-name serif">AI 落地派</div><div class="tr-desc">不追概念，把 AI 装进真实工作流程：舆情预警、内容生产、门店作业都在用。</div></div>
+        <div class="tr-item"><div class="tr-name serif">业务出身</div><div class="tr-desc">不是办公室里长出来的公关：选址、建店、营运、营销都干过，说的话过得了业务关。</div></div>
+      </div>
+    </div>
   </div>
 
   <div>
@@ -297,12 +335,14 @@
       <div class="tl-role serif">国际公关与舆情机构训练（实习）</div>
       <div class="tl-org mono">伟达 · 明思力 · 艾熹 · 蓝门 · 百视通</div>
       <div class="tl-desc">乙方手艺的起点：企业公关、舆情分析、活动公关、新媒体逐个岗位实战，服务客户含米其林、开云集团、Burberry、歌诗达邮轮、汇丰等。在要求最严的乙方学会手艺——新闻稿写到标点、舆情报告做通宵、客户名单横跨奢侈品 / 邮轮 / 金融。</div>
+      <div class="tl-trans"><b class="mono">说白了</b>在广告公关公司当学徒，帮大品牌写新闻稿、盯舆情、办活动——练的是手艺。</div>
     </div>
     <div class="tl-item reveal">
       <div class="tl-date mono">2016.07 — 2021.03</div>
       <div class="tl-role serif">某实业投资集团（东莞）· 公关经理 / 总经理助理</div>
       <div class="tl-org mono">甲方「一人公关部」· 近五年</div>
       <div class="tl-desc">公司与地块收购法律文书起草、政府事务沟通、VI 系统与形象资料搭建、兄弟公司商务与法务管理、总部筹建购地与招投标——一个人就是整个公关部：上午写法律文书，下午跑政府沟通，晚上改 VI，甲方全链路是这么练出来的。</div>
+      <div class="tl-trans"><b class="mono">说白了</b>一个人扛起一家实业公司的全部对外事务——法律文书、政府沟通、品牌形象都归我管。</div>
     </div>
 
     <div class="tl-group mono">国内头部连锁便利店集团 · 五年五段价值链 · 2021 — 至今</div>
@@ -311,36 +351,42 @@
       <div class="tl-role serif">总经理助理 → 数据资产管理</div>
       <div class="tl-org mono">数字化基建 · 总经办 → 数据体系</div>
       <div class="tl-desc">智能会议系统 PMO——每月数万场会议在线召开，纪要归档与任务分发应用于数百个项目。<b>信息总部从 0 到 1 首份纪要记录人，《数据资产管控流程》等 5 份流程文件署名</b>；主导跨体系组织交接、启动公司数据资产整理，BI 驾驶舱与集成物流两大公司级项目启动参与者、驾驶舱交互设计与业务代表。信息总部从 0 到 1 的见证者：第一份纪要是我记的，第一版流程是我署名的。</div>
+      <div class="tl-trans"><b class="mono">说白了</b>给公司装“数字化底盘”——把开会、流程、数据这些底层机制从纸面搬进系统。</div>
     </div>
     <div class="tl-item reveal">
       <div class="tl-date mono">S2 · 2022.09 — 2023.03</div>
       <div class="tl-role serif">董事长助理</div>
       <div class="tl-org mono">总部职能 · 总经理办公室</div>
       <div class="tl-desc"><b>「铁三角会议」纪要记录人，全公司年度述职模板起草人</b>，分管会议管理部门；搭建经营班子会议召集—纪要—决议跟踪机制，推动企业办公平台整体迁移并完成初期培训，近距离参与公司最高层决策。</div>
+      <div class="tl-trans"><b class="mono">说白了</b>在董事长身边当“会议与文书中枢”——最高层的会我来组织，决议我盯着落地。</div>
     </div>
     <div class="tl-item reveal">
       <div class="tl-date mono">S2 · 2023.03 — 2023.07</div>
       <div class="tl-role serif">知识管理课长（兼企业传播部负责人）</div>
       <div class="tl-org mono">总部职能 · 文化传播中心</div>
       <div class="tl-desc"><b>文档编码分级制度署名起草——沿用至今</b>；建成数百条知识词条与 8 大体系知识管理员网络；创建总部订阅号体系（沿用至今）、发起首届效率先锋大赛；《传播体系规划》署名。</div>
+      <div class="tl-trans"><b class="mono">说白了</b>管全公司的知识库和内部传播平台，让几万人的经验能被搜索到。</div>
     </div>
     <div class="tl-item reveal">
       <div class="tl-date mono">S3 · 2023.07 — 2024.11</div>
       <div class="tl-role serif">山东大区 · 加盟线四课连岗</div>
       <div class="tl-org mono">加盟拓展 · 公司认定艰难开发地区</div>
       <div class="tl-desc">计划管理 → 潍城加盟 → 济南加盟 → 加盟建店。<b>《加盟拓展能力建设方案》署名，规划网点达成 111%，培养的拓展员成店率 100%——人人开出 2 间店以上</b>；兼任加盟课程讲师、90 天业务导师、面试官。自己也真金白银入股过一家加盟店（金额从略）——给加盟商讲课的人，自己先是加盟商。</div>
+      <div class="tl-trans"><b class="mono">说白了</b>去最难开拓的市场一线开店——找铺位、谈加盟商、带新人，把拓店从“靠能人”做成“流水线”。</div>
     </div>
     <div class="tl-item reveal">
       <div class="tl-date mono">S4 · 2024.11 — 2026.02</div>
       <div class="tl-role serif">用户运营部部长</div>
       <div class="tl-org mono">经营操盘 · 山东大区 → 广东核心商圈</div>
       <div class="tl-desc">山东用户营销：月度来客数 +31%、会员日均非烟销售同比 +80%。<b>广东核心商圈年度操盘：亿元级商品销售额（完成率 100.5%）、外卖完成率 137%、新店完成率 130%、会员销售占比 58%、双节造节数千万级</b>。S 级项目署名 APMO，智能音频业务 owner；2026 年度规划 v1—v5 五版迭代定稿；培养 1 名继任者 ＋ 1 名金种子。从山东课级到广东部级：年度 KPI 表上 8 项指标，项项有结果。</div>
+      <div class="tl-trans"><b class="mono">说白了</b>管一个区域盘子的会员、营销和门店销售增长，对一年亿元级的销售指标负责。</div>
     </div>
     <div class="tl-item now reveal">
       <div class="tl-date mono">S5 · 2026.02 — 至今</div>
       <div class="tl-role serif">公共关系部部长（首任）</div>
       <div class="tl-org mono">公关与品牌体系 · 直接向管理层汇报</div>
       <div class="tl-desc">从 0 到 1 搭建覆盖万店级网络的公共关系体系：<b>L1-L4 流程体系（4×16×40×28）、全国大区公关岗网络、万块级屏幕资源确权</b>；负面声量压降超九成、闭环率 40% → 82%（内部监测口径），敏感舆情 48 小时下架 / 限流。<b>缺编下 1 人顶 3 人负荷，统筹 5 条工作线</b>。半年，从 0 到 1：危机扛过两起，制度留下一套，商业化开出第一单。</div>
+      <div class="tl-trans"><b class="mono">说白了</b>从零建起公司的“舆论防线”——平时管品牌发声，出事时管危机灭火。</div>
     </div>
   </div>
 </section>
