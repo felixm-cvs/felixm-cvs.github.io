@@ -35,6 +35,17 @@
   .foot .f-line{font-size:12.5px;color:rgba(245,240,230,.7);margin-top:12px;line-height:1.9}
   .foot .f-disc{margin-top:26px;padding-top:14px;border-top:1px solid rgba(245,240,230,.16);
     font-size:10.5px;color:rgba(245,240,230,.42);line-height:1.9}
+  /* 右侧悬浮导航 */
+  .fnav{position:fixed;right:12px;bottom:16px;z-index:90;display:flex;flex-direction:column;gap:5px}
+  .fnav a{display:flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 7px;
+    background:var(--paper);border:1px solid var(--ink);color:var(--ink);text-decoration:none;
+    font-size:10.5px;font-weight:700;letter-spacing:.03em;box-shadow:2px 2px 0 rgba(23,19,16,.14);
+    transition:background .3s var(--ease),color .3s var(--ease)}
+  .fnav a:hover{background:var(--ink);color:var(--paper)}
+  @media(max-width:640px){
+    .fnav{right:6px;bottom:10px;gap:4px}
+    .fnav a{min-width:30px;height:26px;font-size:9px;padding:0 5px}
+  }
 
   .d-hero{padding:44px 0 28px}
   .d-crumb{font-size:11px;letter-spacing:.18em;color:var(--red);text-transform:uppercase;margin-bottom:14px}
@@ -44,7 +55,11 @@
   .d-exp{font-size:14px;color:var(--ink-2);margin-top:10px;line-height:1.8}
   .d-meta{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
   .d-meta span{font-size:10.5px;letter-spacing:.1em;color:var(--ink-3);border:1px solid var(--line);padding:2px 8px}
-  .d-figure{width:100%;display:block;margin:26px 0 6px;border:1px solid var(--line-soft)}
+  .d-visual{margin:26px 0 6px;border:1px solid var(--ink);background:var(--paper-dim);padding:20px 18px 16px}
+  .d-visual .v-kicker{font-size:10px;letter-spacing:.24em;color:var(--red);text-transform:uppercase;font-weight:700}
+  .d-visual .v-result{font-family:"Songti SC","STSong","Noto Serif SC","Noto Serif CJK SC","SimSun",serif;
+    font-size:17.5px;font-weight:800;line-height:1.7;margin-top:10px;color:var(--ink)}
+  .d-visual .flow{margin-top:16px}
   .d-figcap{font-size:10.5px;color:var(--ink-3);letter-spacing:.08em;margin-bottom:26px}
   .fp{border-top:1px solid var(--ink);padding-top:10px}
   .fp-h{font-size:11px;letter-spacing:.24em;color:var(--ink-3);text-transform:uppercase;margin-bottom:6px}
@@ -57,13 +72,13 @@
   .whatis{margin-top:34px;border:1px solid var(--ink);padding:22px 20px 18px;background:var(--paper-dim)}
   .whatis .w-kicker{font-size:10px;letter-spacing:.24em;color:var(--red);text-transform:uppercase;font-weight:700}
   .whatis .w-text{font-size:13.5px;color:var(--ink);margin-top:10px;line-height:1.85}
-  .flow{margin-top:18px;display:flex;flex-direction:column;gap:0}
+  .flow{display:flex;flex-direction:column;gap:0}
   .flow .f-step{display:flex;align-items:center;gap:12px}
   .flow .f-box{flex:1;background:var(--paper);border:1px solid var(--line);padding:9px 12px;
     font-size:12.5px;font-weight:700;line-height:1.5}
   .flow .f-num{font-size:10px;color:var(--paper);background:var(--ink);border-radius:50%;
     width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex:none;font-weight:700}
-  .flow .f-arrow{color:var(--ink-3);font-size:14px;text-align:center;padding:2px 0 2px 32px;text-align:left;line-height:1}
+  .flow .f-arrow{color:var(--ink-3);font-size:14px;padding:2px 0 2px 32px;text-align:left;line-height:1}
   .d-back{display:block;border:1px solid var(--ink);padding:18px 22px;margin:40px 0 8px;
     text-decoration:none;color:var(--ink);font-size:14px;font-weight:800;
     transition:background .45s var(--ease),color .45s var(--ease)}
@@ -78,7 +93,7 @@
   }
 </style>
 </head>
-<body>
+<body id="top">
 <div id="progress"></div>
 
 <nav class="topnav wrap">
@@ -89,29 +104,11 @@
 <header class="d-hero wrap">
   <div class="d-crumb mono reveal"><a href="../works.html">W4 · 经营操盘与创新项目管理</a> / 37</div>
   <h1 class="d-title serif reveal">核心商圈攻坚战项目管理套表</h1>
-  <p class="d-exp reveal">公司最高优先级项目的进度管控表格体系</p>
+  <p class="d-exp reveal">公司最高优先级项目的进度管控表格体系（S 级项目）</p>
   <div class="d-meta mono reveal"><span>2025</span><span>项目管理</span><span>编号 d37</span></div>
-  <img class="d-figure reveal" src="../assets/w4.jpg" alt="核心商圈攻坚战项目管理套表示意图">
-  <div class="d-figcap mono reveal">▲ 示意图（风格化插画，不含真实数据）</div>
-</header>
-
-<section class="fp wrap">
-  <div class="fp-h mono reveal">Five-Point Brief · 五点式</div>
-  <div class="fp-item reveal"><div class="fp-no serif">01</div><div><div class="fp-label">背景 · 一句话</div><div class="fp-body">最高优先级（S 级）项目横跨 11 个业务板块，进度靠口头同步必然失控。</div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">02</div><div><div class="fp-label">我的角色</div><div class="fp-body">项目操盘手（APM），项目管理套表总控。</div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">03</div><div><div class="fp-label">关键动作（三条）</div><div class="fp-body"><ul>
-    <li>主持项目一期周会与日常推进会；</li>
-    <li>建 11 个板块里程碑与关键检查点（KCP）机制；</li>
-    <li>统一交付件封装模板，成果交接标准化。</li>
-  </ul></div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">04</div><div><div class="fp-label">结果</div><div class="fp-body">牵引 11 个板块里程碑交付，项目过程可视、风险 2 小时通报。</div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">05</div><div><div class="fp-label">证据</div><div class="fp-body">项目管理套表与周会纪要体系。</div></div></div>
-</section>
-
-<section class="wrap">
-  <div class="whatis reveal">
-    <div class="w-kicker mono">这是什么 · 一看就懂</div>
-    <p class="w-text">大型项目的“施工进度看板”：11 条战线各自到哪一步、谁卡住了，一张总表看清楚。</p>
+  <aside class="d-visual reveal">
+    <div class="v-kicker mono">At a Glance · 一屏看懂</div>
+    <div class="v-result">11 个板块里程碑全部上表管控，项目过程可视，风险 2 小时内通报到位。</div>
     <div class="flow">
       <div class="f-step"><div class="f-num mono">1</div><div class="f-box">11 板块定里程碑</div></div>
       <div class="f-arrow">↓</div>
@@ -119,8 +116,29 @@
       <div class="f-arrow">↓</div>
       <div class="f-step"><div class="f-num mono">3</div><div class="f-box">关键检查点核验</div></div>
       <div class="f-arrow">↓</div>
-      <div class="f-step"><div class="f-num mono">4</div><div class="f-box">风险快报</div></div>
+      <div class="f-step"><div class="f-num mono">4</div><div class="f-box">风险两小时通报</div></div>
     </div>
+  </aside>
+  <div class="d-figcap mono reveal">▲ 结果与流程均据该交付物的原始文档整理（脱密口径）</div>
+</header>
+
+<section class="fp wrap" id="fp">
+  <div class="fp-h mono reveal">Five-Point Brief · 五点式</div>
+  <div class="fp-item reveal"><div class="fp-no serif">01</div><div><div class="fp-label">背景 · 一句话</div><div class="fp-body">最高优先级（S 级）项目横跨 11 个业务板块，进度靠口头同步，迟早失控。</div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">02</div><div><div class="fp-label">我的角色</div><div class="fp-body">APMO（公司级项目代理负责人）：主持一期周会与推进会，总管项目套表。</div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">03</div><div><div class="fp-label">关键动作（三条）</div><div class="fp-body"><ul>
+    <li>主持项目一期周会与日常推进会，各板块进度当面对表；</li>
+    <li>为 11 个板块建里程碑与 KCP（关键检查点）机制，卡住不放行；</li>
+    <li>统一交付件封装模板，各板块成果交接格式一致、可查可追溯。</li>
+  </ul></div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">04</div><div><div class="fp-label">结果</div><div class="fp-body">11 个板块里程碑全部上表管控，项目过程可视，风险 2 小时内通报到位。</div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">05</div><div><div class="fp-label">证据</div><div class="fp-body">项目管理套表与周会纪要成体系留存，面试现场可任选一期翻看。</div></div></div>
+</section>
+
+<section class="wrap" id="whatis">
+  <div class="whatis reveal">
+    <div class="w-kicker mono">这是什么 · 一分钟看懂</div>
+    <p class="w-text">大型项目的“施工进度看板”：11 条战线各自干到哪一步、谁卡住了，一张总表看清楚，不用挨个打电话问。</p>
   </div>
 
   <a class="d-back reveal" href="../works.html">← 返回作品全集</a>
@@ -134,11 +152,16 @@
       全部交付物均有原始文档、台账或会议纪要支撑，面试现场可按编号调阅。
     </p>
     <p class="f-disc">
-      脱密声明：本页为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；经营数据已按量级概述化处理，比率类指标保留原值；标注“内部监测口径 / 内部测试口径 / 立项预估”的数据仅作能力佐证；6 项人事档案为权威佐证，不展示条目本身，可现场核验。页内插画为风格化示意，不含真实数据。
+      脱密声明：本页为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；经营数据已按量级概述化处理，比率类指标保留原值；标注“内部监测口径 / 内部测试口径 / 立项预估”的数据仅作能力佐证；6 项人事档案为权威佐证，不展示条目本身，可现场核验。章节题图为风格化装饰，详情页图示均按对应交付物的真实流程与结果绘制。
     </p>
   </div>
 </footer>
-<script>
+<nav class="fnav mono" aria-label="页内导航">
+<a href="#top">↑</a>
+<a href="#fp">五点</a>
+<a href="#whatis">说明</a>
+<a href="../works.html">全集</a>
+</nav><script>
 (function(){
   var bar=document.getElementById('progress');
   function onScroll(){

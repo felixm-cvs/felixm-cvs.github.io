@@ -35,6 +35,17 @@
   .foot .f-line{font-size:12.5px;color:rgba(245,240,230,.7);margin-top:12px;line-height:1.9}
   .foot .f-disc{margin-top:26px;padding-top:14px;border-top:1px solid rgba(245,240,230,.16);
     font-size:10.5px;color:rgba(245,240,230,.42);line-height:1.9}
+  /* 右侧悬浮导航 */
+  .fnav{position:fixed;right:12px;bottom:16px;z-index:90;display:flex;flex-direction:column;gap:5px}
+  .fnav a{display:flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 7px;
+    background:var(--paper);border:1px solid var(--ink);color:var(--ink);text-decoration:none;
+    font-size:10.5px;font-weight:700;letter-spacing:.03em;box-shadow:2px 2px 0 rgba(23,19,16,.14);
+    transition:background .3s var(--ease),color .3s var(--ease)}
+  .fnav a:hover{background:var(--ink);color:var(--paper)}
+  @media(max-width:640px){
+    .fnav{right:6px;bottom:10px;gap:4px}
+    .fnav a{min-width:30px;height:26px;font-size:9px;padding:0 5px}
+  }
 
   .d-hero{padding:44px 0 28px}
   .d-crumb{font-size:11px;letter-spacing:.18em;color:var(--red);text-transform:uppercase;margin-bottom:14px}
@@ -44,7 +55,11 @@
   .d-exp{font-size:14px;color:var(--ink-2);margin-top:10px;line-height:1.8}
   .d-meta{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
   .d-meta span{font-size:10.5px;letter-spacing:.1em;color:var(--ink-3);border:1px solid var(--line);padding:2px 8px}
-  .d-figure{width:100%;display:block;margin:26px 0 6px;border:1px solid var(--line-soft)}
+  .d-visual{margin:26px 0 6px;border:1px solid var(--ink);background:var(--paper-dim);padding:20px 18px 16px}
+  .d-visual .v-kicker{font-size:10px;letter-spacing:.24em;color:var(--red);text-transform:uppercase;font-weight:700}
+  .d-visual .v-result{font-family:"Songti SC","STSong","Noto Serif SC","Noto Serif CJK SC","SimSun",serif;
+    font-size:17.5px;font-weight:800;line-height:1.7;margin-top:10px;color:var(--ink)}
+  .d-visual .flow{margin-top:16px}
   .d-figcap{font-size:10.5px;color:var(--ink-3);letter-spacing:.08em;margin-bottom:26px}
   .fp{border-top:1px solid var(--ink);padding-top:10px}
   .fp-h{font-size:11px;letter-spacing:.24em;color:var(--ink-3);text-transform:uppercase;margin-bottom:6px}
@@ -57,13 +72,13 @@
   .whatis{margin-top:34px;border:1px solid var(--ink);padding:22px 20px 18px;background:var(--paper-dim)}
   .whatis .w-kicker{font-size:10px;letter-spacing:.24em;color:var(--red);text-transform:uppercase;font-weight:700}
   .whatis .w-text{font-size:13.5px;color:var(--ink);margin-top:10px;line-height:1.85}
-  .flow{margin-top:18px;display:flex;flex-direction:column;gap:0}
+  .flow{display:flex;flex-direction:column;gap:0}
   .flow .f-step{display:flex;align-items:center;gap:12px}
   .flow .f-box{flex:1;background:var(--paper);border:1px solid var(--line);padding:9px 12px;
     font-size:12.5px;font-weight:700;line-height:1.5}
   .flow .f-num{font-size:10px;color:var(--paper);background:var(--ink);border-radius:50%;
     width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex:none;font-weight:700}
-  .flow .f-arrow{color:var(--ink-3);font-size:14px;text-align:center;padding:2px 0 2px 32px;text-align:left;line-height:1}
+  .flow .f-arrow{color:var(--ink-3);font-size:14px;padding:2px 0 2px 32px;text-align:left;line-height:1}
   .d-back{display:block;border:1px solid var(--ink);padding:18px 22px;margin:40px 0 8px;
     text-decoration:none;color:var(--ink);font-size:14px;font-weight:800;
     transition:background .45s var(--ease),color .45s var(--ease)}
@@ -78,7 +93,7 @@
   }
 </style>
 </head>
-<body>
+<body id="top">
 <div id="progress"></div>
 
 <nav class="topnav wrap">
@@ -89,29 +104,11 @@
 <header class="d-hero wrap">
   <div class="d-crumb mono reveal"><a href="../works.html">W7 · 商业化变现与 AI 前瞻</a> / 61</div>
   <h1 class="d-title serif reveal">品牌安全预警系统 PRD ＋ 公关 Agent 规划</h1>
-  <p class="d-exp reveal">舆情自动预警系统的产品需求文档＋AI 公关助手的顶层规划</p>
+  <p class="d-exp reveal">舆情自动预警系统的需求文档＋AI 公关助手规划</p>
   <div class="d-meta mono reveal"><span>2026</span><span>AI 前瞻</span><span>编号 d61</span></div>
-  <img class="d-figure reveal" src="../assets/w7.jpg" alt="品牌安全预警系统 PRD ＋ 公关 Agent 规划示意图">
-  <div class="d-figcap mono reveal">▲ 示意图（风格化插画，不含真实数据）</div>
-</header>
-
-<section class="fp wrap">
-  <div class="fp-h mono reveal">Five-Point Brief · 五点式</div>
-  <div class="fp-item reveal"><div class="fp-no serif">01</div><div><div class="fp-label">背景 · 一句话</div><div class="fp-body">舆情管理是“事后处置”模式，永远比舆论慢半拍。</div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">02</div><div><div class="fp-label">我的角色</div><div class="fp-body">PRD（产品需求文档）撰写者与公关 Agent 规划主导。</div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">03</div><div><div class="fp-label">关键动作（三条）</div><div class="fp-body"><ul>
-    <li>写品牌安全预警系统 PRD，设计事前预警规则引擎；</li>
-    <li>规划 AI 公关助手的舆情监测、口径生成、传播执行三大场景；</li>
-    <li>与 AI 舆情预警项目、刊例商业化构成体系化布局。</li>
-  </ul></div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">04</div><div><div class="fp-label">结果</div><div class="fp-body">舆情管理从“事后处置”升级为“事前预警”的顶层设计完成。</div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">05</div><div><div class="fp-label">证据</div><div class="fp-body">PRD 与规划文档（脱密）。</div></div></div>
-</section>
-
-<section class="wrap">
-  <div class="whatis reveal">
-    <div class="w-kicker mono">这是什么 · 一看就懂</div>
-    <p class="w-text">给公关部设计一个“AI 同事”的蓝图：它盯舆情、拟口径草稿、跑执行流程，人只做决策。</p>
+  <aside class="d-visual reveal">
+    <div class="v-kicker mono">At a Glance · 一屏看懂</div>
+    <div class="v-result">“事前预警”顶层设计完成：系统需求成文、AI 助手三大场景规划成型。</div>
     <div class="flow">
       <div class="f-step"><div class="f-num mono">1</div><div class="f-box">预警规则引擎</div></div>
       <div class="f-arrow">↓</div>
@@ -119,8 +116,29 @@
       <div class="f-arrow">↓</div>
       <div class="f-step"><div class="f-num mono">3</div><div class="f-box">人工审核决策</div></div>
       <div class="f-arrow">↓</div>
-      <div class="f-step"><div class="f-num mono">4</div><div class="f-box">传播执行回流</div></div>
+      <div class="f-step"><div class="f-num mono">4</div><div class="f-box">执行回流</div></div>
     </div>
+  </aside>
+  <div class="d-figcap mono reveal">▲ 结果与流程均据该交付物的原始文档整理（脱密口径）</div>
+</header>
+
+<section class="fp wrap" id="fp">
+  <div class="fp-h mono reveal">Five-Point Brief · 五点式</div>
+  <div class="fp-item reveal"><div class="fp-no serif">01</div><div><div class="fp-label">背景 · 一句话</div><div class="fp-body">舆情管理长期是“事后处置”模式，永远比舆论慢半拍，处置再好也只是补救。</div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">02</div><div><div class="fp-label">我的角色</div><div class="fp-body">PRD（产品需求文档）撰写者与 AI 公关助手规划主导。</div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">03</div><div><div class="fp-label">关键动作（三条）</div><div class="fp-body"><ul>
+    <li>写品牌安全预警系统 PRD，设计事前预警的规则引擎与触发条件；</li>
+    <li>规划 AI 公关助手三大场景：舆情监测、口径草稿生成、传播执行；</li>
+    <li>与 AI 预警项目、广告商业化形成呼应，构成公关数字化的整体布局。</li>
+  </ul></div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">04</div><div><div class="fp-label">结果</div><div class="fp-body">“事前预警”顶层设计完成：系统需求成文、AI 助手三大场景规划成型。</div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">05</div><div><div class="fp-label">证据</div><div class="fp-body">PRD 与规划文档（已脱密）留存，可现场讲解需求设计思路。</div></div></div>
+</section>
+
+<section class="wrap" id="whatis">
+  <div class="whatis reveal">
+    <div class="w-kicker mono">这是什么 · 一分钟看懂</div>
+    <p class="w-text">给公关部设计一个“AI 同事”的蓝图：它盯舆情、拟口径草稿、跑执行流程，人只做最终决策。机器干重复的活，人干判断的活。</p>
   </div>
 
   <a class="d-back reveal" href="../works.html">← 返回作品全集</a>
@@ -134,11 +152,16 @@
       全部交付物均有原始文档、台账或会议纪要支撑，面试现场可按编号调阅。
     </p>
     <p class="f-disc">
-      脱密声明：本页为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；经营数据已按量级概述化处理，比率类指标保留原值；标注“内部监测口径 / 内部测试口径 / 立项预估”的数据仅作能力佐证；6 项人事档案为权威佐证，不展示条目本身，可现场核验。页内插画为风格化示意，不含真实数据。
+      脱密声明：本页为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；经营数据已按量级概述化处理，比率类指标保留原值；标注“内部监测口径 / 内部测试口径 / 立项预估”的数据仅作能力佐证；6 项人事档案为权威佐证，不展示条目本身，可现场核验。章节题图为风格化装饰，详情页图示均按对应交付物的真实流程与结果绘制。
     </p>
   </div>
 </footer>
-<script>
+<nav class="fnav mono" aria-label="页内导航">
+<a href="#top">↑</a>
+<a href="#fp">五点</a>
+<a href="#whatis">说明</a>
+<a href="../works.html">全集</a>
+</nav><script>
 (function(){
   var bar=document.getElementById('progress');
   function onScroll(){

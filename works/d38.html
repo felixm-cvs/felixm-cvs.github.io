@@ -35,6 +35,17 @@
   .foot .f-line{font-size:12.5px;color:rgba(245,240,230,.7);margin-top:12px;line-height:1.9}
   .foot .f-disc{margin-top:26px;padding-top:14px;border-top:1px solid rgba(245,240,230,.16);
     font-size:10.5px;color:rgba(245,240,230,.42);line-height:1.9}
+  /* 右侧悬浮导航 */
+  .fnav{position:fixed;right:12px;bottom:16px;z-index:90;display:flex;flex-direction:column;gap:5px}
+  .fnav a{display:flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 7px;
+    background:var(--paper);border:1px solid var(--ink);color:var(--ink);text-decoration:none;
+    font-size:10.5px;font-weight:700;letter-spacing:.03em;box-shadow:2px 2px 0 rgba(23,19,16,.14);
+    transition:background .3s var(--ease),color .3s var(--ease)}
+  .fnav a:hover{background:var(--ink);color:var(--paper)}
+  @media(max-width:640px){
+    .fnav{right:6px;bottom:10px;gap:4px}
+    .fnav a{min-width:30px;height:26px;font-size:9px;padding:0 5px}
+  }
 
   .d-hero{padding:44px 0 28px}
   .d-crumb{font-size:11px;letter-spacing:.18em;color:var(--red);text-transform:uppercase;margin-bottom:14px}
@@ -44,7 +55,11 @@
   .d-exp{font-size:14px;color:var(--ink-2);margin-top:10px;line-height:1.8}
   .d-meta{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
   .d-meta span{font-size:10.5px;letter-spacing:.1em;color:var(--ink-3);border:1px solid var(--line);padding:2px 8px}
-  .d-figure{width:100%;display:block;margin:26px 0 6px;border:1px solid var(--line-soft)}
+  .d-visual{margin:26px 0 6px;border:1px solid var(--ink);background:var(--paper-dim);padding:20px 18px 16px}
+  .d-visual .v-kicker{font-size:10px;letter-spacing:.24em;color:var(--red);text-transform:uppercase;font-weight:700}
+  .d-visual .v-result{font-family:"Songti SC","STSong","Noto Serif SC","Noto Serif CJK SC","SimSun",serif;
+    font-size:17.5px;font-weight:800;line-height:1.7;margin-top:10px;color:var(--ink)}
+  .d-visual .flow{margin-top:16px}
   .d-figcap{font-size:10.5px;color:var(--ink-3);letter-spacing:.08em;margin-bottom:26px}
   .fp{border-top:1px solid var(--ink);padding-top:10px}
   .fp-h{font-size:11px;letter-spacing:.24em;color:var(--ink-3);text-transform:uppercase;margin-bottom:6px}
@@ -57,13 +72,13 @@
   .whatis{margin-top:34px;border:1px solid var(--ink);padding:22px 20px 18px;background:var(--paper-dim)}
   .whatis .w-kicker{font-size:10px;letter-spacing:.24em;color:var(--red);text-transform:uppercase;font-weight:700}
   .whatis .w-text{font-size:13.5px;color:var(--ink);margin-top:10px;line-height:1.85}
-  .flow{margin-top:18px;display:flex;flex-direction:column;gap:0}
+  .flow{display:flex;flex-direction:column;gap:0}
   .flow .f-step{display:flex;align-items:center;gap:12px}
   .flow .f-box{flex:1;background:var(--paper);border:1px solid var(--line);padding:9px 12px;
     font-size:12.5px;font-weight:700;line-height:1.5}
   .flow .f-num{font-size:10px;color:var(--paper);background:var(--ink);border-radius:50%;
     width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex:none;font-weight:700}
-  .flow .f-arrow{color:var(--ink-3);font-size:14px;text-align:center;padding:2px 0 2px 32px;text-align:left;line-height:1}
+  .flow .f-arrow{color:var(--ink-3);font-size:14px;padding:2px 0 2px 32px;text-align:left;line-height:1}
   .d-back{display:block;border:1px solid var(--ink);padding:18px 22px;margin:40px 0 8px;
     text-decoration:none;color:var(--ink);font-size:14px;font-weight:800;
     transition:background .45s var(--ease),color .45s var(--ease)}
@@ -78,7 +93,7 @@
   }
 </style>
 </head>
-<body>
+<body id="top">
 <div id="progress"></div>
 
 <nav class="topnav wrap">
@@ -89,29 +104,11 @@
 <header class="d-hero wrap">
   <div class="d-crumb mono reveal"><a href="../works.html">W4 · 经营操盘与创新项目管理</a> / 38</div>
   <h1 class="d-title serif reveal">三方全店智能共创项目</h1>
-  <p class="d-exp reveal">公司×支付平台×科技大厂三方合作的门店智能化项目</p>
+  <p class="d-exp reveal">公司×支付平台×科技大厂三方共建门店的项目管理</p>
   <div class="d-meta mono reveal"><span>2025-26</span><span>项目管理</span><span>编号 d38</span></div>
-  <img class="d-figure reveal" src="../assets/w4.jpg" alt="三方全店智能共创项目示意图">
-  <div class="d-figcap mono reveal">▲ 示意图（风格化插画，不含真实数据）</div>
-</header>
-
-<section class="fp wrap">
-  <div class="fp-h mono reveal">Five-Point Brief · 五点式</div>
-  <div class="fp-item reveal"><div class="fp-no serif">01</div><div><div class="fp-label">背景 · 一句话</div><div class="fp-body">门店智能化需要公司、支付平台、科技大厂三方资源，缺统筹就容易互相扯皮。</div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">02</div><div><div class="fp-label">我的角色</div><div class="fp-body">项目 APM（项目操盘手），主持三方共创例会与需求澄清会。</div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">03</div><div><div class="fp-label">关键动作（三条）</div><div class="fp-body"><ul>
-    <li>建立三方需求提报与负责人机制；</li>
-    <li>用 WBS（工作分解结构）四级套表管理任务与里程碑排期；</li>
-    <li>拉通三方资源完成调研与方案收敛。</li>
-  </ul></div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">04</div><div><div class="fp-label">结果</div><div class="fp-body">共创体系收敛为智慧门店经营、智慧用户营销、智能基建三大板块。</div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">05</div><div><div class="fp-label">证据</div><div class="fp-body">共创例会与需求澄清会纪要、WBS 套表。</div></div></div>
-</section>
-
-<section class="wrap">
-  <div class="whatis reveal">
-    <div class="w-kicker mono">这是什么 · 一看就懂</div>
-    <p class="w-text">三家单位合伙改造门店的“总调度”：谁提需求、谁负责、哪天交，一张表对齐三方。</p>
+  <aside class="d-visual reveal">
+    <div class="v-kicker mono">At a Glance · 一屏看懂</div>
+    <div class="v-result">三方共创收敛为智慧门店经营、智慧用户营销、智能基建三大板块，方案从发散到落地。</div>
     <div class="flow">
       <div class="f-step"><div class="f-num mono">1</div><div class="f-box">三方需求澄清</div></div>
       <div class="f-arrow">↓</div>
@@ -121,6 +118,27 @@
       <div class="f-arrow">↓</div>
       <div class="f-step"><div class="f-num mono">4</div><div class="f-box">方案收敛落地</div></div>
     </div>
+  </aside>
+  <div class="d-figcap mono reveal">▲ 结果与流程均据该交付物的原始文档整理（脱密口径）</div>
+</header>
+
+<section class="fp wrap" id="fp">
+  <div class="fp-h mono reveal">Five-Point Brief · 五点式</div>
+  <div class="fp-item reveal"><div class="fp-no serif">01</div><div><div class="fp-label">背景 · 一句话</div><div class="fp-body">门店智能化要同时调动公司、支付平台、科技大厂三方资源，没人统筹就会互相扯皮。</div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">02</div><div><div class="fp-label">我的角色</div><div class="fp-body">APM（项目操盘手）：主持三方共创例会与需求澄清会，总管排期与资源。</div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">03</div><div><div class="fp-label">关键动作（三条）</div><div class="fp-body"><ul>
+    <li>建立三方需求提报机制，每条需求明确到具体负责人；</li>
+    <li>用 WBS（工作分解结构）把任务拆到四级，里程碑排期三方对齐；</li>
+    <li>拉通三方资源完成门店调研，把发散的需求收敛成可执行方案。</li>
+  </ul></div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">04</div><div><div class="fp-label">结果</div><div class="fp-body">三方共创收敛为智慧门店经营、智慧用户营销、智能基建三大板块，方案从发散到落地。</div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">05</div><div><div class="fp-label">证据</div><div class="fp-body">共创例会与需求澄清会纪要、WBS 套表留存，可面试现场调阅。</div></div></div>
+</section>
+
+<section class="wrap" id="whatis">
+  <div class="whatis reveal">
+    <div class="w-kicker mono">这是什么 · 一分钟看懂</div>
+    <p class="w-text">三家单位合伙改造门店的“总调度”：谁提需求、谁负责、哪天交，一张表对齐三方，扯皮有据可查。</p>
   </div>
 
   <a class="d-back reveal" href="../works.html">← 返回作品全集</a>
@@ -134,11 +152,16 @@
       全部交付物均有原始文档、台账或会议纪要支撑，面试现场可按编号调阅。
     </p>
     <p class="f-disc">
-      脱密声明：本页为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；经营数据已按量级概述化处理，比率类指标保留原值；标注“内部监测口径 / 内部测试口径 / 立项预估”的数据仅作能力佐证；6 项人事档案为权威佐证，不展示条目本身，可现场核验。页内插画为风格化示意，不含真实数据。
+      脱密声明：本页为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；经营数据已按量级概述化处理，比率类指标保留原值；标注“内部监测口径 / 内部测试口径 / 立项预估”的数据仅作能力佐证；6 项人事档案为权威佐证，不展示条目本身，可现场核验。章节题图为风格化装饰，详情页图示均按对应交付物的真实流程与结果绘制。
     </p>
   </div>
 </footer>
-<script>
+<nav class="fnav mono" aria-label="页内导航">
+<a href="#top">↑</a>
+<a href="#fp">五点</a>
+<a href="#whatis">说明</a>
+<a href="../works.html">全集</a>
+</nav><script>
 (function(){
   var bar=document.getElementById('progress');
   function onScroll(){

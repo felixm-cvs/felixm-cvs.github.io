@@ -35,6 +35,17 @@
   .foot .f-line{font-size:12.5px;color:rgba(245,240,230,.7);margin-top:12px;line-height:1.9}
   .foot .f-disc{margin-top:26px;padding-top:14px;border-top:1px solid rgba(245,240,230,.16);
     font-size:10.5px;color:rgba(245,240,230,.42);line-height:1.9}
+  /* 右侧悬浮导航 */
+  .fnav{position:fixed;right:12px;bottom:16px;z-index:90;display:flex;flex-direction:column;gap:5px}
+  .fnav a{display:flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 7px;
+    background:var(--paper);border:1px solid var(--ink);color:var(--ink);text-decoration:none;
+    font-size:10.5px;font-weight:700;letter-spacing:.03em;box-shadow:2px 2px 0 rgba(23,19,16,.14);
+    transition:background .3s var(--ease),color .3s var(--ease)}
+  .fnav a:hover{background:var(--ink);color:var(--paper)}
+  @media(max-width:640px){
+    .fnav{right:6px;bottom:10px;gap:4px}
+    .fnav a{min-width:30px;height:26px;font-size:9px;padding:0 5px}
+  }
 
   .d-hero{padding:44px 0 28px}
   .d-crumb{font-size:11px;letter-spacing:.18em;color:var(--red);text-transform:uppercase;margin-bottom:14px}
@@ -44,7 +55,11 @@
   .d-exp{font-size:14px;color:var(--ink-2);margin-top:10px;line-height:1.8}
   .d-meta{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
   .d-meta span{font-size:10.5px;letter-spacing:.1em;color:var(--ink-3);border:1px solid var(--line);padding:2px 8px}
-  .d-figure{width:100%;display:block;margin:26px 0 6px;border:1px solid var(--line-soft)}
+  .d-visual{margin:26px 0 6px;border:1px solid var(--ink);background:var(--paper-dim);padding:20px 18px 16px}
+  .d-visual .v-kicker{font-size:10px;letter-spacing:.24em;color:var(--red);text-transform:uppercase;font-weight:700}
+  .d-visual .v-result{font-family:"Songti SC","STSong","Noto Serif SC","Noto Serif CJK SC","SimSun",serif;
+    font-size:17.5px;font-weight:800;line-height:1.7;margin-top:10px;color:var(--ink)}
+  .d-visual .flow{margin-top:16px}
   .d-figcap{font-size:10.5px;color:var(--ink-3);letter-spacing:.08em;margin-bottom:26px}
   .fp{border-top:1px solid var(--ink);padding-top:10px}
   .fp-h{font-size:11px;letter-spacing:.24em;color:var(--ink-3);text-transform:uppercase;margin-bottom:6px}
@@ -57,13 +72,13 @@
   .whatis{margin-top:34px;border:1px solid var(--ink);padding:22px 20px 18px;background:var(--paper-dim)}
   .whatis .w-kicker{font-size:10px;letter-spacing:.24em;color:var(--red);text-transform:uppercase;font-weight:700}
   .whatis .w-text{font-size:13.5px;color:var(--ink);margin-top:10px;line-height:1.85}
-  .flow{margin-top:18px;display:flex;flex-direction:column;gap:0}
+  .flow{display:flex;flex-direction:column;gap:0}
   .flow .f-step{display:flex;align-items:center;gap:12px}
   .flow .f-box{flex:1;background:var(--paper);border:1px solid var(--line);padding:9px 12px;
     font-size:12.5px;font-weight:700;line-height:1.5}
   .flow .f-num{font-size:10px;color:var(--paper);background:var(--ink);border-radius:50%;
     width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex:none;font-weight:700}
-  .flow .f-arrow{color:var(--ink-3);font-size:14px;text-align:center;padding:2px 0 2px 32px;text-align:left;line-height:1}
+  .flow .f-arrow{color:var(--ink-3);font-size:14px;padding:2px 0 2px 32px;text-align:left;line-height:1}
   .d-back{display:block;border:1px solid var(--ink);padding:18px 22px;margin:40px 0 8px;
     text-decoration:none;color:var(--ink);font-size:14px;font-weight:800;
     transition:background .45s var(--ease),color .45s var(--ease)}
@@ -78,7 +93,7 @@
   }
 </style>
 </head>
-<body>
+<body id="top">
 <div id="progress"></div>
 
 <nav class="topnav wrap">
@@ -89,38 +104,41 @@
 <header class="d-hero wrap">
   <div class="d-crumb mono reveal"><a href="../works.html">W3 · 用户运营与营销增长</a> / 27</div>
   <h1 class="d-title serif reveal">C 端用户营销全案（owner）</h1>
-  <p class="d-exp reveal">面向消费者的全年营销计划总负责人方案（C 端＝消费者端）</p>
+  <p class="d-exp reveal">大区全年面向消费者的营销总计划（C 端＝消费者端）</p>
   <div class="d-meta mono reveal"><span>2024-25</span><span>用户运营</span><span>编号 d27</span></div>
-  <img class="d-figure reveal" src="../assets/w3.jpg" alt="C 端用户营销全案（owner）示意图">
-  <div class="d-figcap mono reveal">▲ 示意图（风格化插画，不含真实数据）</div>
-</header>
-
-<section class="fp wrap">
-  <div class="fp-h mono reveal">Five-Point Brief · 五点式</div>
-  <div class="fp-item reveal"><div class="fp-no serif">01</div><div><div class="fp-label">背景 · 一句话</div><div class="fp-body">大区消费者营销缺一张全年总图，各专题各打各的，预算花得散。</div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">02</div><div><div class="fp-label">我的角色</div><div class="fp-body">全案 owner（总负责人）。</div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">03</div><div><div class="fp-label">关键动作（三条）</div><div class="fp-body"><ul>
-    <li>做全年目标拆解，管理百万级年度营销预算；</li>
-    <li>围绕客单价、来客数、会员复购、外卖单数四大专题落地举措；</li>
-    <li>融合直播、社群、场景物料、面销等线上线下打法。</li>
-  </ul></div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">04</div><div><div class="fp-label">结果</div><div class="fp-body">覆盖四大专题的课级总纲落地，月度来客数提升 31%。</div></div></div>
-  <div class="fp-item reveal"><div class="fp-no serif">05</div><div><div class="fp-label">证据</div><div class="fp-body">全案文档与月度经营数据口径。</div></div></div>
-</section>
-
-<section class="wrap">
-  <div class="whatis reveal">
-    <div class="w-kicker mono">这是什么 · 一看就懂</div>
-    <p class="w-text">一年的“营销总剧本”：每月主打什么、钱花在哪、怎么算赢，全写在一套方案里。</p>
+  <aside class="d-visual reveal">
+    <div class="v-kicker mono">At a Glance · 一屏看懂</div>
+    <div class="v-result">月度来客数提升 31%：四大专题一张总图落地，百万级预算花到了明处。</div>
     <div class="flow">
       <div class="f-step"><div class="f-num mono">1</div><div class="f-box">年度目标拆解</div></div>
       <div class="f-arrow">↓</div>
-      <div class="f-step"><div class="f-num mono">2</div><div class="f-box">四大专题举措</div></div>
+      <div class="f-step"><div class="f-num mono">2</div><div class="f-box">四大专题定举措</div></div>
       <div class="f-arrow">↓</div>
-      <div class="f-step"><div class="f-num mono">3</div><div class="f-box">预算分配</div></div>
+      <div class="f-step"><div class="f-num mono">3</div><div class="f-box">预算按月分配</div></div>
       <div class="f-arrow">↓</div>
-      <div class="f-step"><div class="f-num mono">4</div><div class="f-box">月度执行与复盘</div></div>
+      <div class="f-step"><div class="f-num mono">4</div><div class="f-box">执行并月度复盘</div></div>
     </div>
+  </aside>
+  <div class="d-figcap mono reveal">▲ 结果与流程均据该交付物的原始文档整理（脱密口径）</div>
+</header>
+
+<section class="fp wrap" id="fp">
+  <div class="fp-h mono reveal">Five-Point Brief · 五点式</div>
+  <div class="fp-item reveal"><div class="fp-no serif">01</div><div><div class="fp-label">背景 · 一句话</div><div class="fp-body">大区消费者营销缺一张全年总图，各专题各干各的，预算花得散、效果说不上来。</div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">02</div><div><div class="fp-label">我的角色</div><div class="fp-body">全案 owner（总负责人）：管全年目标、百万级年度预算与落地节奏。</div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">03</div><div><div class="fp-label">关键动作（三条）</div><div class="fp-body"><ul>
+    <li>把年度目标拆到客单价、来客数、会员复购、外卖单数四大专题，各配举措；</li>
+    <li>管理百万级年度营销预算，按专题分配额度、按月度滚动调整；</li>
+    <li>把直播、社群、场景物料、面对面推销等线上线下手段排进同一张日历。</li>
+  </ul></div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">04</div><div><div class="fp-label">结果</div><div class="fp-body">月度来客数提升 31%：四大专题一张总图落地，百万级预算花到了明处。</div></div></div>
+  <div class="fp-item reveal"><div class="fp-no serif">05</div><div><div class="fp-label">证据</div><div class="fp-body">全案文档与月度经营数据口径记录完整，可面试现场调阅。</div></div></div>
+</section>
+
+<section class="wrap" id="whatis">
+  <div class="whatis reveal">
+    <div class="w-kicker mono">这是什么 · 一分钟看懂</div>
+    <p class="w-text">一年的“营销总剧本”：每月主打什么、钱花在哪、赢了怎么算，全写在一套方案里，团队照着排期干活。</p>
   </div>
 
   <a class="d-back reveal" href="../works.html">← 返回作品全集</a>
@@ -134,11 +152,16 @@
       全部交付物均有原始文档、台账或会议纪要支撑，面试现场可按编号调阅。
     </p>
     <p class="f-disc">
-      脱密声明：本页为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；经营数据已按量级概述化处理，比率类指标保留原值；标注“内部监测口径 / 内部测试口径 / 立项预估”的数据仅作能力佐证；6 项人事档案为权威佐证，不展示条目本身，可现场核验。页内插画为风格化示意，不含真实数据。
+      脱密声明：本页为面试展示用途，全文不涉任职企业名称、同事姓名及加盟商具名信息；经营数据已按量级概述化处理，比率类指标保留原值；标注“内部监测口径 / 内部测试口径 / 立项预估”的数据仅作能力佐证；6 项人事档案为权威佐证，不展示条目本身，可现场核验。章节题图为风格化装饰，详情页图示均按对应交付物的真实流程与结果绘制。
     </p>
   </div>
 </footer>
-<script>
+<nav class="fnav mono" aria-label="页内导航">
+<a href="#top">↑</a>
+<a href="#fp">五点</a>
+<a href="#whatis">说明</a>
+<a href="../works.html">全集</a>
+</nav><script>
 (function(){
   var bar=document.getElementById('progress');
   function onScroll(){
