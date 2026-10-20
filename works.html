@@ -26,7 +26,7 @@
   .wrap{max-width:720px;margin:0 auto;padding:0 22px}
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
   .reveal.in{opacity:1;transform:none}
-  .topnav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--ink)}
+  .topnav{display:flex;justify-content:space-between;align-items:center;padding-top:20px;padding-bottom:20px;border-bottom:1px solid var(--ink)}
   .topnav a{color:var(--ink);text-decoration:none;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
   .topnav a:hover{color:var(--red)}
   .topnav .t-meta{font-size:10px;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase}
@@ -43,7 +43,7 @@
   @media(max-width:640px){ .foot .f-qr{width:72px;height:72px} }
   /* 悬浮导航：桌面右侧竖排 / 移动底部横条 */
   .fnav{position:fixed;right:14px;bottom:18px;z-index:90;display:flex;flex-direction:column;gap:6px}
-  .fnav a{display:flex;align-items:center;justify-content:center;min-width:44px;height:38px;padding:0 10px;
+  .fnav a{display:flex;align-items:center;justify-content:center;min-width:44px;height:38px;padding:0 10px;white-space:nowrap;
     background:var(--paper);border:1px solid var(--ink);color:var(--ink);text-decoration:none;
     font-size:12px;font-weight:700;letter-spacing:.05em;box-shadow:2px 2px 0 rgba(23,19,16,.14);
     transition:background .3s var(--ease),color .3s var(--ease)}
@@ -61,7 +61,7 @@
     .fnav a:first-child{border-left:none}
   }
 
-  .hero{padding:56px 0 40px}
+  .hero{padding-top:56px;padding-bottom:40px}
   .hero-kicker{font-size:11px;letter-spacing:.3em;color:var(--red);text-transform:uppercase;margin-bottom:16px}
   .hero-title{font-size:42px;font-weight:900;line-height:1.15;letter-spacing:.02em}
   .hero-sub{font-size:14.5px;color:var(--ink-2);margin-top:18px;line-height:1.9}
@@ -82,7 +82,7 @@
     border:1px solid var(--line);padding:6px 13px;font-weight:600;
     transition:background .3s var(--ease),color .3s var(--ease)}
   .chapnav a:hover{background:var(--ink);color:var(--paper)}
-  .chap{padding:52px 0 8px}
+  .chap{padding-top:52px;padding-bottom:8px}
   .chap-head{border-top:1px solid var(--ink);padding-top:16px;margin-bottom:8px;display:flex;gap:18px;align-items:flex-start}
   .chap-no{font-size:46px;font-weight:900;color:var(--red);line-height:1;flex:none;letter-spacing:.02em}
   .chap-name{font-size:23px;font-weight:800;line-height:1.3;letter-spacing:.02em}
@@ -119,7 +119,7 @@
     border:1px solid var(--line);padding:1px 5px;line-height:1.6}
   .card .c-link{font-size:11.5px;font-weight:700;color:var(--red);text-decoration:none;letter-spacing:.04em}
   .card .c-link:hover{text-decoration:underline}
-  .q-empty{display:none;padding:40px 0;text-align:center;font-size:13px;color:var(--ink-3)}
+  .q-empty{display:none;padding-top:40px;padding-bottom:40px;text-align:center;font-size:13px;color:var(--ink-3)}
   .back{display:block;border:1px solid var(--ink);padding:26px 24px;margin:56px 0 8px;
     text-decoration:none;color:var(--ink);transition:background .45s var(--ease),color .45s var(--ease)}
   .back:hover{background:var(--ink);color:var(--paper)}
@@ -400,7 +400,7 @@
 <a href="#W5">公关</a>
 <a href="#W6">传播</a>
 <a href="#W7">变现</a>
-<a href="index.html">主页 →</a>
+<a href="index.html">主页</a>
 </nav><script>
 (function(){
   var bar=document.getElementById('progress');

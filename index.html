@@ -33,7 +33,7 @@
   #progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red);z-index:99}
 
   .wrap{max-width:720px;margin:0 auto;padding:0 22px}
-  section{padding:56px 0 8px}
+  section{padding-top:56px;padding-bottom:8px}
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
   .reveal.in{opacity:1;transform:none}
 
@@ -45,7 +45,7 @@
 
   /* 悬浮导航：桌面右侧竖排 / 移动底部横条 */
   .fnav{position:fixed;right:14px;bottom:18px;z-index:90;display:flex;flex-direction:column;gap:6px}
-  .fnav a{display:flex;align-items:center;justify-content:center;min-width:44px;height:38px;padding:0 10px;
+  .fnav a{display:flex;align-items:center;justify-content:center;min-width:44px;height:38px;padding:0 10px;white-space:nowrap;
     background:var(--paper);border:1px solid var(--ink);color:var(--ink);text-decoration:none;
     font-size:12px;font-weight:700;letter-spacing:.05em;box-shadow:2px 2px 0 rgba(23,19,16,.14);
     transition:background .3s var(--ease),color .3s var(--ease)}
@@ -64,7 +64,7 @@
   }
 
   /* ---------- cover ---------- */
-  .cover{min-height:96vh;display:flex;flex-direction:column;justify-content:space-between;padding:26px 0 34px}
+  .cover{min-height:96vh;display:flex;flex-direction:column;justify-content:space-between;padding-top:26px;padding-bottom:34px}
   .cover-top{display:flex;justify-content:space-between;align-items:flex-start}
   .cover-meta{font-size:10px;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;line-height:2}
   .seal{
@@ -608,7 +608,7 @@
   <a href="#method">工具</a>
   <a href="#wall">结果</a>
   <a href="#contact">联系</a>
-  <a href="works.html">作品 →</a>
+  <a href="works.html">作品</a>
 </nav>
 
 <script>
