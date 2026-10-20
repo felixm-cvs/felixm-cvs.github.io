@@ -49,8 +49,13 @@
     transition:background .3s var(--ease),color .3s var(--ease)}
   .fnav a:hover{background:var(--ink);color:var(--paper)}
   @media(max-width:640px){
-    .fnav{right:6px;bottom:10px;gap:4px}
-    .fnav a{min-width:30px;height:26px;font-size:9px;padding:0 5px}
+    body{padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+    .fnav{left:0;right:0;bottom:0;flex-direction:row;justify-content:stretch;gap:0;
+      background:var(--paper);border-top:1px solid var(--ink);
+      padding:6px 2px calc(6px + env(safe-area-inset-bottom))}
+    .fnav a{flex:1;min-width:0;height:28px;font-size:10px;box-shadow:none;
+      border:none;border-left:1px solid var(--line-soft)}
+    .fnav a:first-child{border-left:none;flex:0 0 40px}
   }
 
   .hero{padding:56px 0 40px}
@@ -381,13 +386,13 @@
 </footer>
 <nav class="fnav mono" aria-label="页内导航">
 <a href="#top">↑</a>
-<a href="#W1">W1</a>
-<a href="#W2">W2</a>
-<a href="#W3">W3</a>
-<a href="#W4">W4</a>
-<a href="#W5">W5</a>
-<a href="#W6">W6</a>
-<a href="#W7">W7</a>
+<a href="#W1">基建</a>
+<a href="#W2">拓店</a>
+<a href="#W3">运营</a>
+<a href="#W4">操盘</a>
+<a href="#W5">公关</a>
+<a href="#W6">传播</a>
+<a href="#W7">变现</a>
 </nav><script>
 (function(){
   var bar=document.getElementById('progress');

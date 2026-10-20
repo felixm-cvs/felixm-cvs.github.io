@@ -51,8 +51,13 @@
     transition:background .3s var(--ease),color .3s var(--ease)}
   .fnav a:hover{background:var(--ink);color:var(--paper)}
   @media(max-width:640px){
-    .fnav{right:6px;bottom:10px;gap:4px}
-    .fnav a{min-width:32px;height:26px;font-size:9px;padding:0 5px}
+    body{padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+    .fnav{left:0;right:0;bottom:0;flex-direction:row;justify-content:stretch;gap:0;
+      background:var(--paper);border-top:1px solid var(--ink);
+      padding:6px 2px calc(6px + env(safe-area-inset-bottom))}
+    .fnav a{flex:1;min-width:0;height:28px;font-size:10px;box-shadow:none;
+      border:none;border-left:1px solid var(--line-soft)}
+    .fnav a:first-child{border-left:none;flex:0 0 40px}
   }
 
   /* ---------- cover ---------- */
@@ -191,9 +196,6 @@
   .disclaimer{margin-top:38px;padding-top:16px;border-top:1px solid rgba(245,240,230,.16);
     font-size:10.5px;color:rgba(245,240,230,.42);line-height:1.9}
 
-  .q-qrbox{display:flex;align-items:center;gap:8px}
-  .q-qr{width:54px;height:54px;border:1px solid var(--line);display:block}
-  .q-qrcap{font-size:10px;letter-spacing:.12em;color:var(--ink-3)}
   .c-qrbox{margin-top:28px}
   .c-qr{width:118px;height:118px;border:1px solid rgba(245,240,230,.3);display:block}
   .c-qrcap{font-size:10px;letter-spacing:.16em;color:rgba(245,240,230,.5);margin-top:8px}
@@ -241,7 +243,6 @@
     <div class="quickbar reveal">
       <a class="q-entry serif" href="works.html">查看作品全集 · 62 项交付 <span aria-hidden="true">→</span></a>
       <span class="q-contact mono">176 2059 0302（电话 / 微信同号）　｜　mazhian@yeah.net</span>
-      <span class="q-qrbox"><img class="q-qr" src="assets/wechat_qr.jpg" alt="微信二维码"><span class="q-qrcap mono">微信<br>扫码</span></span>
     </div>
     <div class="cover-hint mono">SCROLL ↓</div>
   </div>
@@ -265,24 +266,10 @@
   </div>
 </section>
 
-<!-- ============ 02 WORKS ENTRY ============ -->
-<section class="wrap" id="works">
-  <div class="sec-head reveal">
-    <div class="sec-eyebrow mono"><span><span class="no">02</span> — Works</span><span>62 项可点名交付物</span></div>
-    <h2 class="sec-title serif">作品全集｜按能力域归档，<br>逐项可查</h2>
-  </div>
-  <a class="entry reveal" href="works.html">
-    <div class="e-eyebrow mono">Works — Deliverables Archive</div>
-    <div class="e-title serif">进入作品全集 →</div>
-    <div class="e-sub">七大能力域 · 62 项交付物，每项附五点式详情页：背景、角色、动作、结果、证据</div>
-    <span class="e-arrow serif">→</span>
-  </a>
-</section>
-
-<!-- ============ 03 TIMELINE ============ -->
+<!-- ============ 02 TIMELINE ============ -->
 <section class="wrap" id="path">
   <div class="sec-head reveal">
-    <div class="sec-eyebrow mono"><span><span class="no">03</span> — Career Path</span><span>2013 — 2026</span></div>
+    <div class="sec-eyebrow mono"><span><span class="no">02</span> — Career Path</span><span>2013 — 2026</span></div>
     <h2 class="sec-title serif">十三年，<br>从乙方手艺到万店体系</h2>
   </div>
 
@@ -349,10 +336,10 @@
   </div>
 </section>
 
-<!-- ============ 04 CASES ============ -->
+<!-- ============ 03 CASES ============ -->
 <section class="wrap" id="cases">
   <div class="sec-head reveal">
-    <div class="sec-eyebrow mono"><span><span class="no">04</span> — Case Files</span><span>一段一案</span></div>
+    <div class="sec-eyebrow mono"><span><span class="no">03</span> — Case Files</span><span>一段一案</span></div>
     <h2 class="sec-title serif">五个案例，对应五段价值链</h2>
   </div>
 
@@ -454,10 +441,10 @@
   </article>
 </section>
 
-<!-- ============ 05 METHOD ============ -->
+<!-- ============ 04 METHOD ============ -->
 <section class="wrap" id="method">
   <div class="sec-head reveal">
-    <div class="sec-eyebrow mono"><span><span class="no">05</span> — Methodology</span><span>跨段资产</span></div>
+    <div class="sec-eyebrow mono"><span><span class="no">04</span> — Methodology</span><span>跨段资产</span></div>
     <h2 class="sec-title serif">工具箱｜人走，系统留下</h2>
   </div>
 
@@ -514,10 +501,10 @@
   </div>
 </section>
 
-<!-- ============ 06 DATA WALL ============ -->
+<!-- ============ 05 DATA WALL ============ -->
 <section class="wrap" id="wall">
   <div class="sec-head reveal">
-    <div class="sec-eyebrow mono"><span><span class="no">06</span> — Data Wall</span><span>挑能打的来</span></div>
+    <div class="sec-eyebrow mono"><span><span class="no">05</span> — Data Wall</span><span>挑能打的来</span></div>
     <h2 class="sec-title serif">结果墙｜不看头衔，<br>看结果</h2>
   </div>
 
@@ -591,11 +578,11 @@
   </div>
 </section>
 
-<!-- ============ 07 CONTACT ============ -->
+<!-- ============ 06 CONTACT ============ -->
 <footer class="contact" id="contact">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-eyebrow mono"><span><span class="no">07</span> — Contact</span><span>随时可聊</span></div>
+      <div class="sec-eyebrow mono"><span><span class="no">06</span> — Contact</span><span>随时可聊</span></div>
       <h2 class="sec-title serif">给我两周，<br>跑通这套系统的第一版</h2>
     </div>
     <p class="contact-line reveal">
@@ -613,7 +600,6 @@
 <nav class="fnav mono" aria-label="页内导航">
   <a href="#top">↑</a>
   <a href="#traits">标签</a>
-  <a href="#works">作品</a>
   <a href="#path">经历</a>
   <a href="#cases">案例</a>
   <a href="#method">工具</a>
