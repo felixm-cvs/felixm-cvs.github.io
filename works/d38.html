@@ -41,21 +41,24 @@
   .foot .f-qr{width:88px;height:88px;display:block;border:1px solid rgba(245,240,230,.3)}
   .foot .f-qrcap{font-size:9.5px;letter-spacing:.14em;color:rgba(245,240,230,.55);margin-top:6px}
   @media(max-width:640px){ .foot .f-qr{width:72px;height:72px} }
-  /* 右侧悬浮导航 */
-  .fnav{position:fixed;right:12px;bottom:16px;z-index:90;display:flex;flex-direction:column;gap:5px}
-  .fnav a{display:flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 7px;
+  /* 悬浮导航：桌面右侧竖排 / 移动底部横条 */
+  .fnav{position:fixed;right:14px;bottom:18px;z-index:90;display:flex;flex-direction:column;gap:6px}
+  .fnav a{display:flex;align-items:center;justify-content:center;min-width:44px;height:38px;padding:0 10px;
     background:var(--paper);border:1px solid var(--ink);color:var(--ink);text-decoration:none;
-    font-size:10.5px;font-weight:700;letter-spacing:.03em;box-shadow:2px 2px 0 rgba(23,19,16,.14);
+    font-size:12px;font-weight:700;letter-spacing:.05em;box-shadow:2px 2px 0 rgba(23,19,16,.14);
     transition:background .3s var(--ease),color .3s var(--ease)}
   .fnav a:hover{background:var(--ink);color:var(--paper)}
+  .fnav a:active{background:var(--red);color:var(--paper)}
+  a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
   @media(max-width:640px){
-    body{padding-bottom:calc(48px + env(safe-area-inset-bottom))}
+    body{padding-bottom:calc(58px + env(safe-area-inset-bottom))}
+    .wrap{padding:0 26px}
     .fnav{left:0;right:0;bottom:0;flex-direction:row;justify-content:stretch;gap:0;
       background:var(--paper);border-top:1px solid var(--ink);
-      padding:6px 2px calc(6px + env(safe-area-inset-bottom))}
-    .fnav a{flex:1;min-width:0;height:28px;font-size:10px;box-shadow:none;
+      padding:5px 4px calc(5px + env(safe-area-inset-bottom))}
+    .fnav a{flex:1;min-width:0;height:44px;font-size:11.5px;box-shadow:none;
       border:none;border-left:1px solid var(--line-soft)}
-    .fnav a:first-child{border-left:none;flex:0 0 40px}
+    .fnav a:first-child{border-left:none}
   }
 
   .d-hero{padding:44px 0 28px}
@@ -177,10 +180,11 @@
   </div>
 </footer>
 <nav class="fnav mono" aria-label="页内导航">
-<a href="#top">↑</a>
+<a href="#top">顶部</a>
 <a href="#fp">五点</a>
 <a href="#whatis">说明</a>
-<a href="../works.html">全集</a>
+<a href="../works.html">全集 →</a>
+<a href="../index.html">主页 →</a>
 </nav><script>
 (function(){
   var bar=document.getElementById('progress');
